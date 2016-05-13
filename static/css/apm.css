@@ -257,6 +257,22 @@ vertical-align:middle;
     width: 98%;
     line-height: 40px;
 }
+.red_button{
+    background-color: rgb(255, 19, 19);
+    color: #fff;
+    padding: 3px;
+    display: inline-block;
+    width: 68%;
+    line-height: 40px;
+}
+.blue_button{
+    background-color: #2FB4CA;
+    color: #fff;
+    padding: 3px;
+    display: inline-block;
+    width: 68%;
+    line-height: 40px;
+}
 .buts_right{
     width: 50%;
     text-align: right;

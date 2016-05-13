@@ -30,6 +30,8 @@ class Account_errors{
     CONST RET_DELETE_FAILED=10022;
     CONST RET_DB_ERROR=10023;
     CONST RET_CAPTCHA_ERROR=10024;
+    CONST RET_NO_LOGIN=10025;
+    CONST RET_NO_REGISTERED=10026;
     static $code_msg=array(
         self::RET_REGISTER_SUCCESS=>'注册成功',
         self::RET_REGISTER_FAILED=>'系统错误，注册失败',
@@ -56,6 +58,8 @@ class Account_errors{
         self::RET_DELETE_SUCCESS=>'数据库记录删除成功',
         self::RET_DELETE_FAILED=>'数据库记录删除失败',
         self::RET_DB_ERROR=>'数据库读取错误',
-        self::RET_CAPTCHA_ERROR=>'短信验证码无效'
+        self::RET_CAPTCHA_ERROR=>'短信验证码无效',
+        self::RET_NO_LOGIN=>'你还没登录',
+        self::RET_NO_REGISTERED=>'该账号还没注册'
     );
 }

@@ -8,7 +8,7 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Cache-control" content="no-cache">
     <title>首页</title>
-    <link rel="stylesheet" type="text/css" href="<?php echo $base_url.'static/css/apm.css';?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo $base_url.'static/css/apm.css?v=0.1';?>">
     <script type="text/javascript" src="<?php echo $base_url.'static/js/zepto.js'?>"></script>
     <script type="text/javascript" src="<?php echo $base_url.'static/js/mysha1.js'?>"></script>
 </head>
@@ -17,6 +17,7 @@
 <ul class="myinfo_head">
         <li >我的资料</li>
     </ul>
+    <div id="logined" >
 <ul class="myinfo_body">
     <li id="headimg"><span>头像:</span><span id="append_img"><img class="thumb_head" src=""></span><span><img class="small_arrow" src="<?php echo $base_url.'static/img/next.png';?>"></span></li>
     <li id="phone"><span >手机号码:</span><span id="append_phone"></span><span><img class="small_arrow" src="<?php echo $base_url.'static/img/next.png';?>"></span></li>
@@ -52,11 +53,17 @@
         <li style="border-bottom: 2px solid #E2DADA;">修改手机号码 </li>
         <li>
             <div class="shell_common margin_bottom_10">
-                手机号码:
-                <input type="text" class="custom_input" id="" placeholder="输入手机号码">
+                新手机号码:
+                <input id="_newphone" type="text" class="custom_input"  placeholder="输入新手机号码">
             </div>
+            <div class="shell_common margin_bottom_10">
+                <span >短信验证码:</span>
+                        <span ><input type="text" class="custom_input" id="phoneCaptcha" placeholder="输入短信验证码"></span>
+                        
+            </div>
+            <div class="txtcenter" ><button id="modify_captcha" class="white_button modify_captcha" style="width:90%;height: 30px" onclick="getMyCaptcha($(this))">获取短信验证码</button></div>
         </li>
-            <li class="txtcenter"><span class="white_button ">提交</span></li>
+        <li class="txtcenter"><span id="submit_phone" class="white_button ">提交</span></li>
         </ul>
     </div>
     <div class ="forname" id="forname">
@@ -91,6 +98,21 @@
             <li class="txtcenter"><span class="white_button" id="modifyPwd">提交</span></li>
         </ul>
     </div>
+</div>
+<div id="nologin" style="display: none">
+        <div style="
+    width: 100%;
+    height: 200px;
+    text-align: center;
+    padding-top: 100px;
+">
+        空空如也...
+    </div>
+    <div style="text-align: center">
+    <span class="red_button"  onclick="demo.ToLogin()">去登录</span>
+    <a class="red_button" style="margin-top: 10px" href="<?php echo $base_url.'phone/Account/regPage';?>">去注册</a>
+    </div>
+</div>
 <input type="hidden" id="_base_url" value="<?php echo $base_url; ?>">
 </body>
 <script type="text/javascript">
@@ -104,7 +126,9 @@ $(function(){
         },
         success: function(data) {
             if(data.toLogin){
-                demo.ToLogin();
+                //demo.ToLogin();
+                $('#nologin').show();
+                $('#logined').hide();
             }else{
                 
                 var str='<img class="thumb_head" src="'+data.headimg+'">';
@@ -280,7 +304,9 @@ $('#logout').tap(function(){
         success: function(data) {
             if(data==1){
                 demo.showToast('退出成功');
-                demo.ToLogin();
+                $('#logined').hide();
+                $('#nologin').show();
+//                demo.ToLogin();
             }else{
                 demo.showToast('退出失败');
             }
@@ -289,6 +315,107 @@ $('#logout').tap(function(){
 })
 $('#headimg').tap(function(){
     demo.setHeadimg();
+})
+//获取短信验证码
+var countdown=60;
+function getMyCaptcha(obj){
+    var yourphone=$('#_newphone').val();
+    if(!yourphone){
+        demo.showToast("先输入新手机号码");
+        return;
+    }
+    $.ajax({
+        url: base_url + 'phone/Account/myCaptcha',
+        type: 'post',
+        data: {
+            yourphone:yourphone,
+            type:1,
+            sign_time_id:demo.getSign()
+        },
+        success: function(data) {
+            switch(data.code){
+                case 1:
+                    demo.showToast("发送短信验证码成功");
+                    break;
+                case -1:
+                    demo.showToast("服务器发送短信验证码出错");
+                    break;
+                case 10004:
+                    demo.showToast("手机格式不正确");
+                    break;
+                case 10001:
+                    demo.showToast("该手机号码已经被注册");
+                    break;
+                case 10025:
+                    demo.showToast("你还没登录");
+                    break;
+            }
+        }
+    })
+    settime(obj);
+}
+function settime(obj) {
+    
+    if (countdown == 0) { 
+        //obj.addClass("modify_captcha");  
+        obj.removeAttr('disabled');       
+        obj.text("免费获取验证码"); 
+        countdown = 60; 
+        return;
+    } else { 
+        //obj.removeClass("modify_captcha"); 
+        obj.attr('disabled','true');
+        obj.text("重新发送(" + countdown + ")"); 
+        countdown--; 
+    } 
+    setTimeout(function() { 
+    settime(obj) }
+    ,1000) 
+}
+//设置手机号码
+$('#submit_phone').tap(function(){
+    var yourphone=$('#_newphone').val();
+    if(!yourphone){
+        demo.showToast("先输入新手机号码");
+        return;
+    }
+    var captcha=$('#phoneCaptcha').val();
+    if(!captcha){
+        demo.showToast("请先输入短信验证码");
+        return;
+    }
+    $.ajax({
+        url: base_url + 'phone/Account/setPhone',
+        type: 'post',
+        data: {
+            newPhone:yourphone,
+            captcha:captcha,
+            sign_time_id:demo.getSign()
+        },
+        success: function(data) {
+            switch(data.code){
+                case 1:
+                    demo.showToast("修改手机号码成功");
+                    $('#append_phone').html(yourphone);
+                    $('#forphone').hide();
+                    break;
+                case 0:
+                    demo.showToast("修改手机号码失败");
+                    break;
+                case 10004:
+                    demo.showToast("手机格式不正确");
+                    break;
+                case 10001:
+                    demo.showToast("该手机号码已经被注册");
+                    break;
+                case 10024:
+                    demo.showToast("短信验证码错误");
+                case 10025:
+                    demo.showToast("你还没登录");
+                    break;
+            }
+        }
+    })
 })
 function onEvent(tag, label, duration) {
     prompt("event", JSON.stringify({tag:tag,label:label, duration:duration}));
