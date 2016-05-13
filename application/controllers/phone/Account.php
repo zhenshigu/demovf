@@ -285,8 +285,9 @@ class Account extends MY_Controller{
         //显示个人资料页面
     function myProfile(){
         header('Cache-Control: no-cache, must-revalidate'); 
-        $res['base_url']=  base_url();
-        $this->load->view('clientm/Myinfo',$res);
+        $res['base_url']=  base_url();    
+            $this->load->view('clientm/Myinfo',$res);
+        
     }
     //异步获取个人资料
     function ajaxProfile(){
@@ -375,6 +376,94 @@ class Account extends MY_Controller{
             return;
         }
     }
+    //设置手机号码
+    function setPhone(){
+        header("Content-type: application/json");
+        $result=array();
+        if($this->is_login){
+            $newPhone=  $this->input->post('newPhone',TRUE);
+            $captcha=  $this->input->post('captcha',TRUE);
+            //电话，密码格式检查  
+            if(!is_numeric($newPhone)||strlen($newPhone)!=self::PHONE_LENGTH){
+                
+                $result['code']=  Account_errors::RET_PHONE_FORMAT;
+                echo json_encode($result);
+                exit();
+            }
+            //判断手机号是否已经被注册
+            if($this->Accountm->check_exist(array('phone'=>$newPhone))){
+                
+                $result['code']=  Account_errors::RET_PHONE_REGISTERED;
+                echo json_encode($result);
+                exit();
+            }
+            
+            $serverCaptcha=  $this->predis->get("l:ca:$newPhone");
+            if($captcha!=$serverCaptcha){
+                $result['code']= Account_errors::RET_CAPTCHA_ERROR;
+                echo json_encode($result);
+                exit();
+            }
+            $this->predis->delete("l:ca:$newPhone");
+            $arr['phone']=&$newPhone;
+            $conf['userid']=  $this->_userid;
+            if($this->Accountm->updaterecord($conf,$arr)){
+                $result['code']=1;
+                echo json_encode($result);
+                return;
+            }  else {
+                $result['code']=0;
+                echo json_encode($result);
+                return;
+            }
+        }  else {
+            $result['code']=  Account_errors::RET_NO_LOGIN;
+            echo json_encode($result);
+            return;
+        }
+    }
+    //忘记密码
+    function forgotPwd(){
+        $type=  $this->input->post('type',TRUE);
+        if($type==1){
+            header("Content-type: application/json");
+            $passwd=  $this->input->post('passwd',TRUE);
+            $phone=  $this->input->post('phone',TRUE);
+            $captcha=  $this->input->post('captcha',TRUE);
+            if($passwd===''){
+                $result['code']=  Account_errors::RET_PASSWORD_NULL;
+                echo json_encode($result);
+                return;
+            }
+            //电话格式检查  
+            if(!is_numeric($phone)||strlen($phone)!=self::PHONE_LENGTH){                
+                $result['code']=  Account_errors::RET_PHONE_FORMAT;
+                echo json_encode($result);
+                exit();
+            }
+            $serverCaptcha=  $this->predis->get("p:ca:$phone");
+            if($captcha!=$serverCaptcha){
+                $result['code']= Account_errors::RET_CAPTCHA_ERROR;
+                echo json_encode($result);
+                exit();
+            }
+            $this->predis->delete("p:ca:$phone");
+            $arr['mypwd']=  password_hash($passwd, PASSWORD_DEFAULT);
+            $conf['phone']=  $phone;
+            if($this->Accountm->updaterecord($conf,$arr)){
+                $result['code']=1;
+                echo json_encode($result);
+                return;
+            }  else {
+                $result['code']=0;
+                echo json_encode($result);
+                return;
+            }
+        }  else {
+            $res['base_url']=  base_url();
+            $this->load->view('clientm/Forgotpwd',$res);
+        }       
+    }
     //设置头像
     function setHead(){
         if($this->is_login){
@@ -425,8 +514,8 @@ class Account extends MY_Controller{
         }  else {
             echo 'cache error';
         }
-    }
-    //获取验证码
+    }   
+    //获取验证码,注册用
     public function getCaptcha(){
         header("Content-type: application/json");
         $phone=  $this->input->post('yourphone',TRUE);
@@ -475,11 +564,91 @@ class Account extends MY_Controller{
             }
         }
     }
-            
-    function test(){
-//        $this->_isLogin();
-//        echo "这个控制器能够正常访问到";
-        $this->load->view('clientm/Tempnav',array('base_url'=>'http://192.168.31.181:8011/'));
-    }
+   //登录后用,获取验证码    
+   function myCaptcha(){
+       header("Content-type: application/json");
+       $phone=  $this->input->post('yourphone',TRUE);
+       $type=  $this->input->post('type',TRUE);
+       switch ($type){
+           case 1:
+               if($this->is_login){                      
+                //电话格式检查  
+                if(!is_numeric($phone)||strlen($phone)!=self::PHONE_LENGTH){
+                    $result=array();
+                    $result['code']=  Account_errors::RET_PHONE_FORMAT;
+                    echo json_encode($result);
+                    exit();
+                }
+                //判断手机号是否已经被注册
+                if($this->Accountm->check_exist(array('phone'=>$phone))){
+                    $result=array();
+                    $result['code']=  Account_errors::RET_PHONE_REGISTERED;
+                    echo json_encode($result);
+                    exit();
+                }
+                $captcha='';
+                for($i=0;$i<6;$i++){
+                    $captcha.=rand(0, 9);
+                }
+                //sava captcha to the redis               
+                $result=$this->predis->setEx('l:ca:'.$phone,600,$captcha);
+                if($result){
+                    //发送验证码到手机
+                    $this->alimessage->send($captcha,$phone);
+                    $result=array();
+                    $result['code']=1;
+                    echo json_encode($result);
+                    return;
+                }  else {
+                    $result=array();
+                    $result['code']=-1;
+                    echo json_encode($result);
+                    return;
+                }
+            }  else {
+                $result['code']=  Account_errors::RET_NO_LOGIN;
+                echo json_encode($result);
+                return;
+            }
+            break;
+            case 2:
+                //电话格式检查  
+                if(!is_numeric($phone)||strlen($phone)!=self::PHONE_LENGTH){
+                    $result=array();
+                    $result['code']=  Account_errors::RET_PHONE_FORMAT;
+                    echo json_encode($result);
+                    exit();
+                }
+                //判断手机号码是否有注册
+                if(!$this->Accountm->check_exist(array('phone'=>$phone))){
+                    $result=array();
+                    $result['code']=  Account_errors::RET_NO_REGISTERED;
+                    echo json_encode($result);
+                    exit();
+                }
+                $captcha='';
+                for($i=0;$i<6;$i++){
+                    $captcha.=rand(0, 9);
+                }
+                //sava captcha to the redis               
+                $result=$this->predis->setEx('p:ca:'.$phone,600,$captcha);
+                if($result){
+                    //发送验证码到手机
+                    $this->alimessage->send($captcha,$phone);
+                    $result=array();
+                    $result['code']=1;
+                    echo json_encode($result);
+                    return;
+                }else {
+                    $result=array();
+                    $result['code']=-1;
+                    echo json_encode($result);
+                    return;
+                }
+                break;
+       }
+       
+   }
+
 }
 

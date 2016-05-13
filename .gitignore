@@ -4,3 +4,8 @@ application/config/alimessage.php
 application/config/my_sys_config.php
 application/controllers/seller/Test.php
 static/captcha/
+checkin.php
+nbproject/
+phpinfo.php
+test/
+static/article/
