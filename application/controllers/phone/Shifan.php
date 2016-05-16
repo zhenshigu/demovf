@@ -5,7 +5,7 @@ class Shifan extends MY_Controller{
         $this->load->model('phonem/Seefunm');
         $this->load->helper('url');
         $this->config->load('my_sys_config');
-    }
+    }    
     //app首页
     function index(){
 //	$this->output->enable_profiler(TRUE);
