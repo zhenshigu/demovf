@@ -199,7 +199,7 @@ $(document).ready(function() {
 $(function(){
 	$('.picslist').tap(function() {
 	    var picslist_tag=$(this).data('tag');
-	    location.href=<?php echo $base_url."static/article/"?>+links[picslist_tag];
+	    location.href='<?php echo $base_url."static/article/"?>'+links[picslist_tag];
 	})
 })
 </script>
