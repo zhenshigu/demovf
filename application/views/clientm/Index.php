@@ -13,8 +13,8 @@
 
 <body>
     
-    <ul class="index_address">
-        <li id="_dingwei" >
+    <ul class="index_address" >
+        <li id="_dingwei" style="background: #F84E4E;color: white">
             当前城市:
         </li>
     </ul>
@@ -41,6 +41,7 @@
             }
         }
         ?>
+                <li><a href="http://vfupload2.oss-cn-qingdao.aliyuncs.com/test/viewfuns.html">1111</a></li>
     </ul>
  <!--   
     <ul class="index_nav">
