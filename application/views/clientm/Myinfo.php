@@ -15,7 +15,7 @@
 
 <body>
 <ul class="myinfo_head">
-        <li >我的资料</li>
+    <li class="headerColor">我的资料</li>
     </ul>
     <div id="logined" >
 <ul class="myinfo_body">
