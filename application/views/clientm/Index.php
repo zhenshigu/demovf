@@ -14,7 +14,7 @@
 <body>
     
     <ul class="index_address" >
-        <li id="_dingwei" style="background: #F84E4E;color: white">
+        <li id="_dingwei" class="headerColor">
             当前城市:
         </li>
     </ul>

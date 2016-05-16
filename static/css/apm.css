@@ -580,3 +580,7 @@ vertical-align:middle;
 .txtcenter{
     text-align: center;
 }
+
+.headerColor{
+    background: #F84E4E;color: white
+}
