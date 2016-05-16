@@ -8,6 +8,7 @@ class Shifan extends MY_Controller{
     }
     //app首页
     function index(){
+//	$this->output->enable_profiler(TRUE);
         $res=  $this->Seefunm->tget(array(),'*','article','edittime');
         if($res){
             foreach ($res as &$one){
