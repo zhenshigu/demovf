@@ -86,20 +86,20 @@ $(function(){
 })
  //图片轮播
                         var links=[
-				'a.html',
-				'b.html',
-				'c.html',
-				'd.html',
-				'f.html'
+				'viewfuns.html',
+				'viewfuns.html',
+				'viewfuns.html',
+				'viewfuns.html',
+				'viewfuns.html'
 			];
 $(document).ready(function() {
                        
 			var lst = [
-				'21.jpg',
-				'40.jpg',
-				'43.jpg',
-				'55.jpg',
-				'64.jpg'
+				'IMG_0363.jpg',
+				'IMG_0364.jpg',
+				'IMG_0365.jpg',
+				'IMG_0366.jpg',
+				'IMG_0367.jpg'
 			];
                         
 			var i=0;
@@ -107,7 +107,7 @@ $(document).ready(function() {
 			$(lst).each(function(k, v) {
 				htm += "<li class='picslist' name='is_tj_r' data-tag=" + i + " style='padding-right: 0;'>";
                                
-				htm += '<img src=<?php echo $base_url."static/article/art-img/"?>'+v+'>';
+				htm += '<img src=<?php echo $base_url."static/article/index_img/"?>'+v+'>';
 				htm += '</li>';
 				$('.ad_btn_wrap').append('<a href="javascript:;"></a>');
                                 i++;
@@ -199,7 +199,7 @@ $(document).ready(function() {
 $(function(){
 	$('.picslist').tap(function() {
 	    var picslist_tag=$(this).data('tag');
-	    location.href=links[picslist_tag];
+	    location.href=<?php echo $base_url."static/article/"?>+links[picslist_tag];
 	})
 })
 </script>
