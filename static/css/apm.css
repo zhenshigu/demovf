@@ -6,7 +6,7 @@
 body {
     background: #F1F3F2;
     font-family: inherit;
-    font-size: 14px;
+    font-size: 15px;
 }
 
 a {
@@ -297,15 +297,20 @@ vertical-align:middle;
 .myinfo_head li {
     padding: 10px;
     text-align: center;
+    line-height: 40px;
+    font-size: 26px;
 }
 .myinfo_body{
 	background: #fff;
-	margin-top: 10px;
+	margin-top: 15px;
 }
 .myinfo_body li{
 	padding: 5px;
 	border-bottom: 1px solid #E2DADA;
                   line-height: 34px;
+}
+.myinfo_body li span{
+    font-size: 15px;
 }
 .myinfo_body li span:nth-child(1){
     display: inline-block;
@@ -333,10 +338,11 @@ vertical-align:middle;
 
 .myinfo_foot{
 	background: #fff;
-	margin-top: 10px;
+	margin-top: 15px;
 }
 .myinfo_foot li{
-	
+	color: #EB3649;
+        line-height: 40px;
 	text-align: center;
 }
 .forgender {

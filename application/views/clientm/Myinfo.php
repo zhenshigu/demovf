@@ -26,12 +26,9 @@
     <li id="setpwd">修改密码</li>
 </ul>
 <ul class="myinfo_order">
-<li>订单</li>
-<li>收藏</li>
-<li>分享</li>
 </ul>
 <ul class="myinfo_foot">
-    <li><span class="orange_button" id="logout">退出</span></li>
+    <li><span  id="logout">退出帐号</span></li>
 </ul>
     <!--
     <ul class="index_nav">
