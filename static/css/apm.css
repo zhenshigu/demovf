@@ -448,6 +448,10 @@ vertical-align:middle;
     padding: 10px;
     font-size: 22px;
 }
+.index_content{
+    position: relative;
+    top: 50px;
+}
 .index_content li{
 	padding: 1px;
     margin: 5px;
