@@ -17,7 +17,7 @@
         <li>
             <div class="shell_common">
             
-            <input type="text" class="custom_input" id="yourphone" placeholder="输入要注册的手机号码">
+                <input type="number" class="custom_input" id="yourphone" placeholder="输入要注册的手机号码">
             </div>
         </li>
         <li style="height: 40px">
@@ -137,11 +137,9 @@ $(function() {
         })
     })
     $('#yourphone').on('blur',function(){
-        var regAccount=$('#yourphone').val();
-       
+        var regAccount=$('#yourphone').val();     
         if(regAccount!=""){
-            demo.saveAccount(regAccount);
-            demo.showToast(regAccount);
+            demo.saveAccount(regAccount);           
         }       
     })
     $('#yourphone').val(demo.getAccount());
