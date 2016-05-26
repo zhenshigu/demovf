@@ -22,7 +22,7 @@
         </li>
         <li style="height: 40px">
             <div class="shell_input">
-                <input class="custom_input" type="text" placeholder="输入图片验证码" id="imgcode" >
+                <input class="custom_input" type="text" placeholder="输入图片验证码,看不清点击图片" id="imgcode" >
             </div>
             <div style="width:30%;text-align: right;float: left">
             <?php echo $imgcode;?>
