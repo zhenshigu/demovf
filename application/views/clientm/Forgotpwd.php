@@ -9,7 +9,7 @@
     <script type="text/javascript" src="<?php echo $base_url.'static/js/mysha1.js'?>"></script>
 </head>
 
-<body style="background: #fff">
+<body>
     <ul class="reg_head">
         <li><span id="goback" ><img class="rotate" src="<?php echo $base_url.'static/img/icon_dropdown.png';?>"></span><span>忘记密码</span></li>
     </ul>
@@ -21,7 +21,7 @@
             </div>
             <div class="shell_common margin_bottom_10">
                 <span ></span>
-                <span ><input type="text" class="custom_input" style="width: 80px" id="phoneCaptcha" placeholder="输入短信验证码"></span>
+                <span ><input type="text" class="custom_input" style="width: 50%" id="phoneCaptcha" placeholder="输入短信验证码"></span>
                 <button id="modify_captcha" class="white_button modify_captcha" style="width:40%;height: 30px;float: right" onclick="getMyCaptcha($(this))">获取验证码</button>        
             </div>
             <div class="shell_common margin_bottom_10">
@@ -33,7 +33,7 @@
                 <input type="password" class="custom_input" id="confPwd" placeholder="输入密码进行确认">
                 </div>
         </li>
-        <li class="txtcenter"><span id="setPwd" style="line-height: 30px" class="white_button ">提交</span></li>
+        <li class="txtcenter" style="background: #F1F3F2;padding-top: 10px;"><span id="setPwd" style="line-height: 35px" class="white_button uniColor">提交</span></li>
     </ul>
     <input type="hidden" id="_base_url" value="<?php echo $base_url;?>">
 <script type="text/javascript">
