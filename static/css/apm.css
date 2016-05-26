@@ -501,7 +501,7 @@ vertical-align:middle;
     background: #fff;
     position: fixed;
     width: 100%;
-    z-index: 2;
+    z-index: 20;
 }
 .dgou_head li{
     line-height: 30px;
@@ -530,7 +530,7 @@ vertical-align:middle;
     color: #555;
     position: relative;
     top:50px;
-    
+    z-index: 2
 }
 
 .classify li {
