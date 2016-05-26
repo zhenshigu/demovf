@@ -16,20 +16,20 @@
     <ul class="block1" id="block1">
         <li>
             <div class="shell_common margin_bottom_10">
-                手机号码:
+                
                 <input id="_newphone" type="text" class="custom_input"  placeholder="输入手机号码">
             </div>
             <div class="shell_common margin_bottom_10">
-                <span >验证码:</span>
+                <span ></span>
                 <span ><input type="text" class="custom_input" style="width: 80px" id="phoneCaptcha" placeholder="输入短信验证码"></span>
                 <button id="modify_captcha" class="white_button modify_captcha" style="width:40%;height: 30px;float: right" onclick="getMyCaptcha($(this))">获取验证码</button>        
             </div>
             <div class="shell_common margin_bottom_10">
-                新密码:
+               
                 <input type="password" class="custom_input" id="mynewPwd" placeholder="输入新密码">
                 </div>
                 <div class="shell_common margin_bottom_10">
-                确认密码:
+                
                 <input type="password" class="custom_input" id="confPwd" placeholder="输入密码进行确认">
                 </div>
         </li>
