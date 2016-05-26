@@ -441,8 +441,10 @@ vertical-align:middle;
         
 }
 .index_address li{
-	line-height: 40px;
-        text-align: center;
+	    line-height: 30px;
+    text-align: center;
+    padding: 10px;
+    font-size: 22px;
 }
 .index_content li{
 	padding: 1px;
@@ -490,8 +492,10 @@ vertical-align:middle;
     background: #fff;
 }
 .dgou_head li{
-    line-height: 40px;
+    line-height: 30px;
     text-align: center;
+    padding: 10px;
+    font-size: 22px;
 }
 .sf_article{
     background: #fff;

@@ -15,7 +15,7 @@
     
     <ul class="index_address" >
         <li id="_dingwei" class="headerColor">
-            当前城市:
+            视范
         </li>
     </ul>
 
@@ -56,8 +56,8 @@
 $(function(){
     var base_url = $('#_base_url').val();
     //获取定位
-    var dingwei=demo.getCity();
-    $('#_dingwei').html("当前城市:"+dingwei);
+//    var dingwei=demo.getCity();
+//    $('#_dingwei').html("当前城市:"+dingwei);
     //获取屏幕高度
 //    $(function(){
 //        var sh=document.documentElement.clientHeight;
