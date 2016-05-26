@@ -33,7 +33,7 @@
                 <input type="password" class="custom_input" id="confPwd" placeholder="输入密码进行确认">
                 </div>
         </li>
-        <li class="txtcenter" style="background: #F1F3F2;padding-top: 10px;"><span id="setPwd" style="line-height: 35px" class="white_button uniColor">提交</span></li>
+        <li class="txtcenter" style="background: #F1F3F2;padding-top: 15px;"><span id="setPwd" style="line-height: 35px" class="white_button uniColor">提交</span></li>
     </ul>
     <input type="hidden" id="_base_url" value="<?php echo $base_url;?>">
 <script type="text/javascript">
