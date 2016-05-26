@@ -22,7 +22,7 @@
             <div class="shell_common margin_bottom_10">
                 <span ></span>
                 <span ><input type="text" class="custom_input" style="width: 50%" id="phoneCaptcha" placeholder="输入短信验证码"></span>
-                <button id="modify_captcha" class="white_button modify_captcha" style="width:40%;height: 30px;float: right" onclick="getMyCaptcha($(this))">获取验证码</button>        
+                <button id="modify_captcha" class="white_button modify_captcha" style="width:40%;height: 30px;float: right;border: 0;color: #5E90CF;font-size: 15px" onclick="getMyCaptcha($(this))">获取验证码</button>        
             </div>
             <div class="shell_common margin_bottom_10">
                
