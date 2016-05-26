@@ -500,7 +500,8 @@ class Account extends MY_Controller{
             'img_width' => '70',
             'img_height'=>'30',
             'word_length'   => 4,
-            'img_id'=>'imgid'
+            'img_id'=>'imgid',
+            'pool'      => '2345678abcdefghjklmnprstuvwxyzABCDEFGHJKLMNPRSTUVWXYZ'
             
         );
         $cap = create_captcha($vals);
