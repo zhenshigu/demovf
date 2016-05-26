@@ -16,7 +16,7 @@
     <ul class="block1" id="block1">
         <li>
             <div class="shell_common">
-            手机号码:
+            
             <input type="text" class="custom_input" id="yourphone" placeholder="输入要注册的手机号码">
             </div>
         </li>
@@ -27,28 +27,28 @@
             <div style="width:30%;text-align: right;float: left">
             <?php echo $imgcode;?>
             </div></li>
-            <li ><div id="sendCode" class="sendCode">获取短信验证码</div></li>
+        <li style="background:#F1F3F2;padding-top:20px;"><div id="sendCode"  class="sendCode">获取短信验证码</div></li>   
     </ul>
     <ul class="block2" id="block2" style="display: none;">
         <li>
-            <div style="border:1px solid #ccc;width: 90%">
-            短信验证码:
+            <div style="width: 90%;margin-left:5%">
+            
             <input type="text" class="custom_input" id="captcha" placeholder="输入收到的短信验证码">
             </div>
         </li>
         <li>
-            <div style="border:1px solid #ccc;width: 90%">
-            设置密码:
+            <div style="width: 90%;margin-left:5%">
+            
             <input type="password" class="custom_input" id="pwd" placeholder="输入你的密码">
             </div>
         </li>
         <li>
-            <div style="border:1px solid #ccc;width: 90%">
-            确认密码:
+            <div style="width: 90%;margin-left:5%">
+           
             <input type="password" class="custom_input" id="pwd2" placeholder="输入密码进行确认">
             </div>
         </li>
-        <li ><div id="sendCaptcha" class="sendCode">注册</div></li>
+        <li style="background: #F1F3F2;padding-top: 20px;"><div id="sendCaptcha"   class="sendCode">注册</div></li>
     </ul>
     <input type="hidden" id="_base_url" value="<?php echo $base_url;?>">
 </body>
@@ -69,6 +69,7 @@ $(function() {
                 switch(data.code){
                     case 1:
                         $('#block1').toggle();
+                        $('#sendCode').toggle();
                         $('#block2').toggle();
                         break;
                     case 0:
