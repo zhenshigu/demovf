@@ -552,6 +552,8 @@ vertical-align:middle;
     outline: 0 none;
     line-height: 30px;
     padding-left: 5px;
+    width:100%;
+    font-size: 15px;
 }
 .shell_input{
     
