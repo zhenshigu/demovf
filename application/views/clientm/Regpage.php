@@ -136,6 +136,15 @@ $(function() {
             }
         })
     })
+    $('#yourphone').on('blur',function(){
+        var regAccount=$('#yourphone').val();
+       
+        if(regAccount!=""){
+            demo.saveAccount(regAccount);
+            demo.showToast(regAccount);
+        }       
+    })
+    $('#yourphone').val(demo.getAccount());
 })
 </script>
 
