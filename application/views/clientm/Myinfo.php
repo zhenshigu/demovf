@@ -99,11 +99,11 @@
     text-align: center;
     padding-top: 100px;
 ">
-        空空如也...
+        你还没登录哦...
     </div>
     <div style="text-align: center">
-    <span class="red_button"  onclick="demo.ToLogin()">去登录</span>
-    <a class="red_button" style="margin-top: 10px" href="<?php echo $base_url.'phone/Account/regPage';?>">去注册</a>
+    <span class="red_button uniColor"  onclick="demo.ToLogin()">去登录</span>
+    <a class="red_button uniColor" style="margin-top: 10px" href="<?php echo $base_url.'phone/Account/regPage';?>">去注册</a>
     </div>
 </div>
 <input type="hidden" id="_base_url" value="<?php echo $base_url; ?>">
