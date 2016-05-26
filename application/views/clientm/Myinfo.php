@@ -23,7 +23,7 @@
     <li id="phone"><span >手机号码:</span><span id="append_phone"></span><span><img class="small_arrow" src="<?php echo $base_url.'static/img/next.png';?>"></span></li>
     <li id="nickname"><span>昵称:</span><span  id="append_name"></span><span><img class="small_arrow" src="<?php echo $base_url.'static/img/next.png';?>"></span></li>
     <li id="gender"><span>性别:</span><span id="append_sex"></span><span><img class="small_arrow" src="<?php echo $base_url.'static/img/next.png';?>"></span></li>
-    <li id="setpwd">修改密码</li>
+    <li id="setpwd"><span>修改密码</span><span></span><span><img class="small_arrow" src="<?php echo $base_url.'static/img/next.png';?>"></span></li>
 </ul>
 <ul class="myinfo_order">
 </ul>
@@ -40,59 +40,55 @@
 <div id="mask" class="mask"> </div>
     <div class="forgender" id="forgender">
         <ul>
-            <li style="border-bottom: 2px solid #E2DADA;">修改性别 </li>
-            <li id="setboy">男</li>
-            <li id="setgirl">女</li>
+            <li style="border-bottom: 2px solid #E2DADA;text-align: center">修改性别 </li>
+            <li id="setboy" style="color: #5E90CF;border-bottom: 1px solid #E2DADA;">男</li>
+            <li id="setgirl" style="color: #5E90CF;">女</li>
         </ul>
     </div>
     <div class ="forphone" id="forphone">
         <ul>
-        <li style="border-bottom: 2px solid #E2DADA;">修改手机号码 </li>
+        <li style="border-bottom: 2px solid #E2DADA;text-align: center;">修改手机号码 </li>
         <li>
             <div class="shell_common margin_bottom_10">
-                新手机号码:
+               
                 <input id="_newphone" type="text" class="custom_input"  placeholder="输入新手机号码">
             </div>
             <div class="shell_common margin_bottom_10">
-                <span >短信验证码:</span>
-                        <span ><input type="text" class="custom_input" id="phoneCaptcha" placeholder="输入短信验证码"></span>
-                        
+                <span ></span>
+                        <span ><input type="text" class="custom_input" style="width: 60%" id="phoneCaptcha" placeholder="输入短信验证码"></span>
+                       <button id="modify_captcha" class="white_button modify_captcha" style="width:30%;height: 30px;border: 0;color: #5E90CF;font-size: 15px" onclick="getMyCaptcha($(this))">获取验证码</button> 
             </div>
-            <div class="txtcenter" ><button id="modify_captcha" class="white_button modify_captcha" style="width:90%;height: 30px" onclick="getMyCaptcha($(this))">获取短信验证码</button></div>
+            <div class="txtcenter" ></div>
         </li>
-        <li class="txtcenter"><span id="submit_phone" class="white_button ">提交</span></li>
+        <li class="txtcenter"><span id="submit_phone" class="white_button uniColor">提交</span></li>
         </ul>
     </div>
     <div class ="forname" id="forname">
         <ul>
-        <li style="border-bottom: 2px solid #E2DADA;">修改昵称 </li>
-        <li>
-        <div class="shell_common margin_bottom_10">
-            昵称:
-            <input type="text" id="myname" class="custom_input"  placeholder="输入昵称">
+        <li style="text-align: center">修改昵称 </li>
+        <li style="border-bottom: 1px solid #E2DADA;border-top: 1px solid #E2DADA;">
+        <div class="shell_common ">           
+            <input type="text" id="myname" class="custom_input" style="font-size: 18px"  placeholder="输入昵称">
         </div>
         </li>
-        <li class="txtcenter"><span class="white_button" id="setname">提交</span></li>
+        <li class="txtcenter"><span class="white_button uniColor" id="setname">提交</span></li>
         </ul>
     </div>
     <div class="forsetpwd" id="forsetpwd">
         <ul>
-            <li style="border-bottom: 2px solid #E2DADA;">修改密码</li>
+            <li style="border-bottom: 2px solid #E2DADA;text-align: center">修改密码</li>
             <li>
-                <div class="shell_common margin_bottom_10">
-                旧密码:
+                <div class="shell_common margin_bottom_10">               
                 <input type="password" class="custom_input" id="myoldPwd" placeholder="输入旧密码">
                 </div>
                 <div class="shell_common margin_bottom_10">
-                新密码:
                 <input type="password" class="custom_input" id="mynewPwd" placeholder="输入新密码">
                 </div>
                 <div class="shell_common margin_bottom_10">
-                确认密码:
                 <input type="password" class="custom_input" id="confPwd" placeholder="输入密码进行确认">
                 </div>
             </li>
-            <li class="txtcenter"><span class="white_button" id="modifyPwd">提交</span></li>
+            <li class="txtcenter"><span class="white_button uniColor" id="modifyPwd">提交</span></li>
         </ul>
     </div>
 </div>
