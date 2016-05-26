@@ -56,7 +56,7 @@
             <div class="shell_common margin_bottom_10">
                 <span ></span>
                         <span ><input type="text" class="custom_input" style="width: 60%" id="phoneCaptcha" placeholder="输入短信验证码"></span>
-                       <button id="modify_captcha" class="white_button modify_captcha" style="width:30%;height: 30px;border: 0;color: #5E90CF;font-size: 15px" onclick="getMyCaptcha($(this))">获取验证码</button> 
+                       <button id="modify_captcha" class="white_button modify_captcha" style="width:39%;height: 30px;border: 0;color: #5E90CF;font-size: 15px" onclick="getMyCaptcha($(this))">获取验证码</button> 
             </div>
             <div class="txtcenter" ></div>
         </li>
@@ -352,7 +352,7 @@ function settime(obj) {
     if (countdown == 0) { 
         //obj.addClass("modify_captcha");  
         obj.removeAttr('disabled');       
-        obj.text("免费获取验证码"); 
+        obj.text("获取验证码"); 
         countdown = 60; 
         return;
     } else { 
