@@ -9,7 +9,7 @@ class Shifan extends MY_Controller{
     //app首页
     function index(){
 //	$this->output->enable_profiler(TRUE);
-        $res=  $this->Seefunm->tget(array(),'*','article','edittime');
+        $res=  $this->Seefunm->tget(array(),'*','article','edittime',30);
         if($res){
             foreach ($res as &$one){
                 $one['headimg']=  $this->config->item('http_article_img').$one['headimg'];
