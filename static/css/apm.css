@@ -412,10 +412,10 @@ vertical-align:middle;
 .white_button {
     background-color: #fff;
     padding: 0 3px 0 3px;
-    display: inline-block;
-    border: 1px solid #9C8F8F;
-    width: 60%;
+    display: inline-block;   
+    width: 90%;
     text-align: center;
+    border-radius: 6px;
 }
 .small_arrow{
     width: 20px;
@@ -565,7 +565,7 @@ vertical-align:middle;
         width: 90%;
     background: rgb(239, 16, 16);
     text-align: center;
-    line-height: 40px;
+    line-height: 35px;
     color: #fff;
     margin-left: 5%;
     border-radius: 6px;
@@ -596,5 +596,8 @@ vertical-align:middle;
 }
 
 .headerColor{
+    background: #F84E4E;color: white
+}
+.uniColor{
     background: #F84E4E;color: white
 }
