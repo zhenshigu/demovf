@@ -41,8 +41,8 @@
     <div class="forgender" id="forgender">
         <ul>
             <li style="border-bottom: 2px solid #E2DADA;text-align: center">修改性别 </li>
-            <li id="setboy" style="color: #5E90CF;border-bottom: 1px solid #E2DADA;">男</li>
-            <li id="setgirl" style="color: #5E90CF;">女</li>
+            <li id="setboy" style="border-bottom: 1px solid #E2DADA;">男</li>
+            <li id="setgirl" style="">女</li>
         </ul>
     </div>
     <div class ="forphone" id="forphone">
