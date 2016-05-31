@@ -10,7 +10,9 @@
 </head>
 
 <body>
-    
+    <div id="tip1" class="load-container load5" style="z-index:125;position: fixed;display:none">
+        <div class="loader">Loading...</div>
+    </div>
     <ul class="index_address" >
         <li id="_dingwei" class="headerColor">
             视范
@@ -25,7 +27,7 @@
             <div class="ad_btn_wrap"></div>
         </div>
     </article>
-    <ul class="index_content">
+    <ul id="ind_articles" class="index_content">
         <?php if($res){
             foreach($res as $one){
                 ?>
@@ -38,8 +40,7 @@
         <?php
             }
         }
-        ?>
-                <li><a href="http://vfupload2.oss-cn-qingdao.aliyuncs.com/test/viewfuns.html">1111</a></li>
+        ?>              
     </ul>
  <!--   
     <ul class="index_nav">
@@ -83,6 +84,31 @@ $(function(){
         }
     })
 })
+    $('#ind_articles').swipeUp(function(){
+        var offset=$('#ind_articles li').length;
+        if(offset>10){
+            return;
+        }
+        $.ajax({
+            url:base_url+'phone/Shifan/ajaxIndex',
+            type: 'post',           
+            data: {offset:offset},
+            beforeSend:function(){
+ 		 	$('#tip1').css("display","block");
+ 		 },
+            success:function(data){
+                $('#tip1').css("display","none");
+                var str='';
+                $.each(data,function(index,item){
+                    str+='<li><a href='+item['url']+'><img src="'+item['headimg']+'"><p>'+item['title']+'</p></a></li>'
+                })
+                $('#ind_articles').append(str);
+            },
+            error:function(){
+                    $('#tip1').css("display","none");
+            }
+        })
+    })
  //图片轮播
                         var links=[
 				'viewfuns.html',
