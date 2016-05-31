@@ -55,8 +55,14 @@ class Shifan extends MY_Controller{
     function ajaxDgl(){
         header("Content-type: application/json");
         $offset=  $this->input->post('offset');
+        $style= intval($this->input->post('type'));
         $limit=10;
-        $res=  $this->Seefunm->tget(array(),'*','article','edittime',$limit,$offset);
+        if($style<=0){
+            $arr=array();
+        }  else {
+            $arr=array('styleid'=>$style);
+        }
+        $res=  $this->Seefunm->tget($arr,'*','article','edittime',$limit,$offset);
         if($res){
             foreach ($res as &$one){
                 $one['headimg']=  $this->config->item('http_article_img').$one['headimg'];
