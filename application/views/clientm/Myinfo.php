@@ -392,6 +392,7 @@ $('#submit_phone').tap(function(){
                     demo.showToast("修改手机号码成功");
                     $('#append_phone').html(yourphone);
                     $('#forphone').hide();
+                    $('#mask').hide();
                     break;
                 case 0:
                     demo.showToast("修改手机号码失败");
