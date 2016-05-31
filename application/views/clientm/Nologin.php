@@ -9,8 +9,7 @@
     <meta http-equiv="Cache-control" content="no-cache">
     <title>首页</title>
     <link rel="stylesheet" type="text/css" href="<?php echo $base_url.'static/css/apm.css?v=0.1';?>">
-    <script type="text/javascript" src="<?php echo $base_url.'static/js/zepto.js'?>"></script>
-    <script type="text/javascript" src="<?php echo $base_url.'static/js/mysha1.js'?>"></script>
+   
 </head>
 
 <body>
@@ -29,6 +28,7 @@
     <span class="red_button"  onclick="demo.ToLogin()">去登录</span>
     <span class="blue_button"  onclick="demo.ToLogin()">去注册</span>
     </div>
-    
+     <script type="text/javascript" src="<?php echo $base_url.'static/js/zepto.js'?>"></script>
+    <script type="text/javascript" src="<?php echo $base_url.'static/js/mysha1.js'?>"></script>
 </body>
 </html>

@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo $base_url.'static/css/apm.css';?>">
     <link rel="stylesheet" type="text/css" href="<?php echo $base_url.'static/css/load-com.css';?>">
     <link rel="stylesheet" type="text/css" href="<?php echo $base_url.'static/css/load5.css';?>">
-    <script type="text/javascript" src="<?php echo $base_url.'static/js/zepto.js'?>"></script>
+    
 </head>
 
 <body>
@@ -43,7 +43,8 @@
         <li><a href="<?php echo $base_url.'phone/Account/myProfile'?>"><span data-tag="2">我的</span></a></li>
         <li><a href="<?php echo $base_url.'phone/Goods/hsList'?>"><span class="act" data-tag="3">婚摄</span></a></li>
 </ul>-->
-</body>
+    <script type="text/javascript" src="<?php echo $base_url.'static/js/zepto.js'?>"></script>
+
 <script type="text/javascript">
     $('#hstc').swipeUp(function(){
         var str='    <li><img src="../img/2.jpg"><a href=""><span class="store_name">海天盛宴婚纱摄影 3999元</span><span class="store_palce">海南三亚</span></a></li>'
@@ -76,5 +77,6 @@ $('.index_nav li').tap(function() {
     }
 })
 </script>
+</body>
 </html>
 

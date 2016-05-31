@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo $base_url.'static/css/apm.css';?>">
     <link rel="stylesheet" type="text/css" href="<?php echo $base_url.'static/css/load-com.css';?>">
     <link rel="stylesheet" type="text/css" href="<?php echo $base_url.'static/css/load5.css';?>">
-    <script type="text/javascript" src="<?php echo $base_url.'static/js/zepto.js'?>"></script>
+    
 </head>
 
 <body id="mybody">
@@ -57,7 +57,8 @@
         <li><a href="<?php echo $base_url.'phone/Goods/hsList'?>"><span data-tag="3">婚摄</span></a></li>
     </ul>-->
     <input type="hidden" id="_base_url" value="<?php echo $base_url;?>">
-</body>
+    <script type="text/javascript" src="<?php echo $base_url.'static/js/zepto.js'?>"></script>
+
 <script type="text/javascript">
 $(function(){
     var base_url = $('#_base_url').val();
@@ -128,6 +129,6 @@ $(function(){
     })
 })
 </script>
-
+</body>
 </html>
 

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <title>首页</title>
     <link rel="stylesheet" type="text/css" href="<?php echo $base_url.'static/css/apm.css';?>">
-    <script type="text/javascript" src="<?php echo $base_url.'static/js/zepto.js'?>"></script>
+    
 </head>
 
 <body>
@@ -78,7 +78,8 @@
     </div>
     <input type="hidden" id="_gid" value="<?php echo $gid;?>">
     <input type="hidden" id="_base_url" value="<?php echo $base_url; ?>">
-</body>
+    <script type="text/javascript" src="<?php echo $base_url.'static/js/zepto.js'?>"></script>
+
 <script type="text/javascript">
  //标签切换函数
 $('.s-time li').tap(function() {
@@ -132,6 +133,6 @@ $('#love').tap(function(){
 //    alert(demo.getSign());
 })
 </script>
-
+</body>
 </html>
 

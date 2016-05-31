@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <link rel="stylesheet" type="text/css" href="<?php echo $base_url.'static/css/apm.css';?>">
-    <script type="text/javascript" src="<?php echo $base_url.'static/js/zepto.js'?>"></script>
+    
 </head>
 
 <body>
@@ -32,7 +32,8 @@
     </ul>
     <input type="hidden" id="_base_url" value="<?php echo $base_url; ?>">
     <input type="hidden" id="_sid" value="<?php echo $res1['sid']; ?>">
-</body>
+    <script type="text/javascript" src="<?php echo $base_url.'static/js/zepto.js'?>"></script>
+
 <script type="text/javascript">
     var base_url=$('#_base_url').val();
     var sid=$('#_sid').val();
@@ -53,4 +54,5 @@
     })
     
 </script>
+</body>
 </html>
