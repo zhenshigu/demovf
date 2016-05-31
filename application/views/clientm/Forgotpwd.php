@@ -9,9 +9,7 @@
 </head>
 
 <body>
-    <ul class="reg_head">
-        <li class="headerColor"><span id="goback" ><img class="rotate" src="<?php echo $base_url.'static/img/icon_dropdown.png';?>"></span><span>忘记密码</span></li>
-    </ul>
+   
     <ul class="block1" id="block1">
         <li>
             <div class="shell_common margin_bottom_10">
