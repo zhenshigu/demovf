@@ -15,9 +15,8 @@ em{
 #adWrap{
 	overflow: hidden;
 }
-.i_top {
-    
-    
+.i_top {    
+    position: relative;
 }
 .i_top ul{
 	overflow: hidden;
