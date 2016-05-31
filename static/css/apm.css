@@ -486,7 +486,7 @@ vertical-align:middle;
 }
 .dgou_content{
     position: relative;
-    top: 50px;
+    
 }
 .dgou_content li{
 	padding: 10px;
@@ -528,7 +528,7 @@ vertical-align:middle;
     background: #fff;
     color: #555;
     position: relative;
-    top:50px;
+   
     z-index: 2
 }
 
