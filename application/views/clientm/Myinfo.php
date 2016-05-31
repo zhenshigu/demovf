@@ -13,7 +13,6 @@
 </head>
 
 <body>
-
     <div id="logined" >
 <ul class="myinfo_body">
     <li id="headimg"><span>头像:</span><span id="append_img"><img class="thumb_head" src=""></span><span><img class="small_arrow" src="<?php echo $base_url.'static/img/next.png';?>"></span></li>
