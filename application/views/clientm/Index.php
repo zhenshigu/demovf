@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <title>首页</title>
     <link rel="stylesheet" type="text/css" href="<?php echo $base_url.'static/css/apm.css';?>">       
-    <link rel="stylesheet" type="text/css" href="<?php echo $base_url.'static/css/public.css';?>">  
+    <link rel="stylesheet" type="text/css" href="<?php echo $base_url.'static/css/public.css';?>"> 
+    <link rel="stylesheet" type="text/css" href="<?php echo $base_url.'static/css/load-com.css';?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo $base_url.'static/css/load5.css';?>">
 </head>
 
 <body>
