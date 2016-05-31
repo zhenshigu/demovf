@@ -571,6 +571,7 @@ class Account extends MY_Controller{
        $phone=  $this->input->post('yourphone',TRUE);
        $type=  $this->input->post('type',TRUE);
        switch ($type){
+           //change phone
            case 1:
                if($this->is_login){                      
                 //电话格式检查  
@@ -612,6 +613,7 @@ class Account extends MY_Controller{
                 return;
             }
             break;
+            //change password
             case 2:
                 //电话格式检查  
                 if(!is_numeric($phone)||strlen($phone)!=self::PHONE_LENGTH){
@@ -635,7 +637,7 @@ class Account extends MY_Controller{
                 $result=$this->predis->setEx('p:ca:'.$phone,600,$captcha);
                 if($result){
                     //发送验证码到手机
-                    $this->alimessage->send($captcha,$phone);
+                    $this->alimessage->generalSend($captcha,$phone);
                     $result=array();
                     $result['code']=1;
                     echo json_encode($result);
