@@ -193,8 +193,8 @@ $('#setboy').tap(function(){
         },
         success: function(data) {
             if(data==1){
-                $('#gender').html('<span>性别:</span><span>男</span>');
-                 onEvent("setSex","男",1);
+                $('#append_sex').html('男');
+                 
             }else{
                 demo.showToast('设置失败');
             }
@@ -212,10 +212,10 @@ $('#setgirl').tap(function(){
         },
         success: function(data) {
             if(data==1){
-                $('#gender').html('<span>性别:</span><span>女</span>');
+                $('#append_sex').html('女');
                 $('#mask').hide();
             $('#forgender').hide();
-            onEvent("setSex","女",1);
+            
             }else{
                 demo.showToast('设置失败');
             }
@@ -232,7 +232,7 @@ $('#setname').tap(function(){
         },
         success: function(data) {
             if(data==1){
-                $('#nickname').html('<span>昵称:</span><span>'+name+'</span>');
+                $('#append_name').html(name);
                 $('#mask').hide();
             $('#forname').hide();
             }else{
