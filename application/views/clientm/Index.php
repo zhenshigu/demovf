@@ -15,11 +15,7 @@
     <div id="tip1" class="load-container load5" style="z-index:125;position: fixed;display:none">
         <div class="loader">Loading...</div>
     </div>
-    <ul class="index_address" >
-        <li id="_dingwei" class="headerColor">
-            视范
-        </li>
-    </ul>
+
 
     <article class="i_top">
         <div id="out">
