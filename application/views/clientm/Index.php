@@ -83,7 +83,6 @@ $(function(){
 //            location=base_url+demo.getCity();
         }
     })
-})
     $('#ind_articles').swipeUp(function(){
         var offset=$('#ind_articles li').length;
         if(offset>10){
@@ -109,6 +108,8 @@ $(function(){
             }
         })
     })
+})
+    
  //图片轮播
                         var links=[
 				'viewfuns.html',
