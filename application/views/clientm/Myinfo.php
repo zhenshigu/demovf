@@ -9,8 +9,7 @@
     <meta http-equiv="Cache-control" content="no-cache">
     <title>首页</title>
     <link rel="stylesheet" type="text/css" href="<?php echo $base_url.'static/css/apm.css?v=0.1';?>">
-    <script type="text/javascript" src="<?php echo $base_url.'static/js/zepto.js'?>"></script>
-    <script type="text/javascript" src="<?php echo $base_url.'static/js/mysha1.js'?>"></script>
+    
 </head>
 
 <body>
@@ -107,7 +106,9 @@
     </div>
 </div>
 <input type="hidden" id="_base_url" value="<?php echo $base_url; ?>">
-</body>
+<script type="text/javascript" src="<?php echo $base_url.'static/js/zepto.js'?>"></script>
+    <script type="text/javascript" src="<?php echo $base_url.'static/js/mysha1.js'?>"></script>
+
 <script type="text/javascript">
  var base_url=$('#_base_url').val();
 $(function(){
@@ -421,5 +422,5 @@ function onKVEvent(tag, map, duration) {
 }
 
 </script>
-
+</body>
 </html>

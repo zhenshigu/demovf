@@ -5,8 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <link rel="stylesheet" type="text/css" href="<?php echo $base_url.'static/css/apm.css';?>">
-    <script type="text/javascript" src="<?php echo $base_url.'static/js/zepto.js'?>"></script>
-    <script type="text/javascript" src="<?php echo $base_url.'static/js/mysha1.js'?>"></script>
+    
 </head>
 
 <body>
@@ -36,6 +35,8 @@
         <li class="txtcenter" style="background: #F1F3F2;padding-top: 15px;"><span id="setPwd" style="line-height: 35px" class="white_button uniColor">提交</span></li>
     </ul>
     <input type="hidden" id="_base_url" value="<?php echo $base_url;?>">
+    <script type="text/javascript" src="<?php echo $base_url.'static/js/zepto.js'?>"></script>
+    <script type="text/javascript" src="<?php echo $base_url.'static/js/mysha1.js'?>"></script>
 <script type="text/javascript">
  var base_url=$('#_base_url').val();
 $('#goback').tap(function(){
