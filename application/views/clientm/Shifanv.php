@@ -11,9 +11,7 @@
 </head>
 
 <body id="mybody">
-     <ul class="dgou_head">
-         <li class="headerColor">视范美丽人生</li>
-    </ul>
+    
     <ul class="classify">
         <li><span class="act_red" data-tag="0">韩国风</span></li>
         <li><span data-tag="1">欧美风</span></li>
