@@ -595,7 +595,7 @@ class Account extends MY_Controller{
                 $result=$this->predis->setEx('l:ca:'.$phone,600,$captcha);
                 if($result){
                     //发送验证码到手机
-                    $this->alimessage->send($captcha,$phone);
+                    $this->alimessage->generalSend($captcha,$phone);
                     $result=array();
                     $result['code']=1;
                     echo json_encode($result);

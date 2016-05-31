@@ -28,6 +28,14 @@ class Alimessage{
         return $this->objectArray($response);
         
     }
+    public function generalSend($code,$phones){
+        $this->req->setSmsTemplateCode("SMS_9405022");
+        $this->req->setSmsParam("{\"code\":\"".$code."\"}");
+        $this->req->setRecNum($phones);
+        $response= $this->c->execute($this->req);
+        return $this->objectArray($response);
+    }
+
     //stdClass Object 转 数组
     private function objectArray($array){
         if(is_object($array)){
