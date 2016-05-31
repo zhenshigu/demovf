@@ -21,6 +21,22 @@ class Shifan extends MY_Controller{
         $this->load->view('clientm/Index',$data);
         
     }
+    function ajaxIndex(){
+        header("Content-type: application/json");
+        $offset= intval($this->input->post('offset'));
+        if($offset>10){
+            return;
+        }
+        $limit=3;
+        $res=  $this->Seefunm->tget(array(),'*','article','edittime',$limit,$offset);
+        if($res){
+            foreach ($res as &$one){
+                $one['headimg']=  $this->config->item('http_article_img').$one['headimg'];
+                $one['url']=  $this->config->item('http_article').$one['url'];
+            }
+        }
+        echo json_encode($res);
+    }
     //视范页面
     function dgou(){
         $limit=10;
