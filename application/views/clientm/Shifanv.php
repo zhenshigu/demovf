@@ -13,11 +13,12 @@
 <body id="mybody">
     
     <ul class="classify">
-        <li><span class="act_red" data-tag="1">韩国风</span></li>
+        <li><span class="act_red" data-tag="-1">全部</span></li>
+        <li><span  data-tag="1">韩国风</span></li>
         <li><span data-tag="2">欧美风</span></li>
-        <li><span data-tag="3">复古风</span></li>
-        <li><span data-tag="4">清新风</span></li>
+        <li><span data-tag="3">复古风</span></li>        
         <li id="more"><span data-tag="-2"><img src="<?php echo $base_url.'static/img/icon_dropdown.png'?>"></span></li>
+        <li class="to_hidden"><span data-tag="4">清新风</span></li>
         <li class="to_hidden"><span data-tag="5">甜美风</span></li>
         <li class="to_hidden"><span data-tag="6">校园风</span></li>
         <li class="to_hidden"><span data-tag="7">日系</span></li>
@@ -90,7 +91,7 @@
         $('.classify li span').removeClass("act_red");
         $(this).children().addClass("act_red");
         var _tag = $(this).children().data("tag");
-        if(_tag<=0){
+        if(_tag==-2||_tag=='-2'){
             return;
         }
         current = _tag;
