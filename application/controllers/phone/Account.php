@@ -256,9 +256,8 @@ class Account extends MY_Controller{
     }
     //用户退出
     function logout(){
-        if($this->is_login){
-            $userid=intval($this->uri->segment(6));
-            if($this->Token->logout($userid)){
+        if($this->is_login){            
+            if($this->Token->logout($this->_userid)){
                 echo 1;
             }  else {
                 echo 0;
