@@ -192,9 +192,10 @@ $('#mask').tap(function(){
 })
 $('#setboy').tap(function(){
     $.ajax({
-        url: base_url + 'phone/Account/setGender/'+demo.getSign(),
+        url: base_url + 'phone/Account/setGender',
         type: 'post',
         data: {
+            sign_time_id:demo.getSign(),
             gender:1
         },
         success: function(data) {
@@ -211,9 +212,10 @@ $('#setboy').tap(function(){
 })
 $('#setgirl').tap(function(){
     $.ajax({
-        url: base_url + 'phone/Account/setGender/'+demo.getSign(),
+        url: base_url + 'phone/Account/setGender',
         type: 'post',
         data: {
+            sign_time_id:demo.getSign(),
             gender:0
         },
         success: function(data) {
@@ -231,9 +233,10 @@ $('#setgirl').tap(function(){
 $('#setname').tap(function(){
     var name=$('#myname').val();
         $.ajax({
-        url: base_url + 'phone/Account/setNickname/'+demo.getSign(),
+        url: base_url + 'phone/Account/setNickname',
         type: 'post',
         data: {
+            sign_time_id:demo.getSign(),
             name:name
         },
         success: function(data) {
@@ -297,9 +300,10 @@ $('#modifyPwd').tap(function(){
 })
 $('#logout').tap(function(){
     $.ajax({
-        url: base_url + 'phone/Account/logout/'+demo.getSign(),
+        url: base_url + 'phone/Account/logout',
         type: 'post',
         data: {
+            sign_time_id:demo.getSign()
         },
         success: function(data) {
             if(data==1){
