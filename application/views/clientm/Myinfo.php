@@ -109,6 +109,11 @@
 <script type="text/javascript">
  var base_url=$('#_base_url').val();
 $(function(){
+    if(demo.getUserid()==""){
+        $('#nologin').show();
+        $('#logined').hide();
+        return;
+    }
     $.ajax({
         url: base_url + 'phone/Account/ajaxProfile',
         type: 'post',
@@ -132,6 +137,10 @@ $(function(){
                     $('#append_sex').html("男");
                 }
             }
+        },
+        error:function(){
+            $('#nologin').show();
+            $('#logined').hide();
         }
     })
 //    var sh=document.documentElement.clientHeight;
@@ -294,9 +303,10 @@ $('#logout').tap(function(){
         },
         success: function(data) {
             if(data==1){
-                demo.showToast('退出成功');
+                demo.showToast('退出成功');                
                 $('#logined').hide();
                 $('#nologin').show();
+                demo.logout();
 //                demo.ToLogin();
             }else{
                 demo.showToast('退出失败');
