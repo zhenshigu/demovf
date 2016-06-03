@@ -9,7 +9,6 @@
     <link rel="stylesheet" type="text/css" href='http://static.viewfuns.com/static/css/public.css?v=0.1'> 
     <link rel="stylesheet" type="text/css" href='http://static.viewfuns.com/static/css/load-com.css'>
     <link rel="stylesheet" type="text/css" href='http://static.viewfuns.com/static/css/load5.css'>
-    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
 </head>
 
 <body>
@@ -26,7 +25,6 @@
             <div class="ad_btn_wrap"></div>
         </div>
     </article>
-    <div class="content infinite-scroll infinite-scroll-bottom" data-distance="100">
     <ul id="ind_articles" class="index_content">
         <?php if($res){
             foreach($res as $one){
@@ -42,7 +40,6 @@
         }
         ?>              
     </ul>
-    </div>
  <!--   
     <ul class="index_nav">
         <li><a href="<?php echo $base_url.'phone/shifan'?>"><span class="act" data-tag="0">首页</span></a></li>
@@ -52,11 +49,9 @@
     </ul>-->
     <input type="hidden" id="_base_url" value="<?php echo $base_url;?>">
     <?php echo $commonJs;?>
-    <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
     <script src='http://static.viewfuns.com/static/js/tween.js' type="text/javascript" ></script>
     <script type="text/javascript">
 $(function(){
-    $.init();
     var base_url = $('#_base_url').val();
     //获取定位
 //    var dingwei=demo.getCity();
@@ -86,30 +81,7 @@ $(function(){
 //            location=base_url+demo.getCity();
         }
     })
-//    $('#ind_articles').swipeUp(function(){
-//        var offset=$('#ind_articles li').length;
-//        $.ajax({
-//            url:base_url+'phone/Shifan/ajaxIndex',
-//            type: 'post',           
-//            data: {offset:offset},
-//            beforeSend:function(){
-// 		 	$('#tip1').css("display","block");
-// 		 },
-//            success:function(data){
-//                demo.showToast('加载完毕');
-//                $('#tip1').css("display","none");
-//                var str='';
-//                $.each(data,function(index,item){
-//                    str+='<li><a href='+item['url']+'><img src="'+item['headimg']+'"><p>'+item['title']+'</p></a></li>'
-//                })
-//                $('#ind_articles').append(str);
-//            },
-//            error:function(){
-//                    $('#tip1').css("display","none");
-//            }
-//        })
-//    })
-    $(document).on('infinite', '.infinite-scroll-bottom',function() {
+    $('#ind_articles').swipeUp(function(){
         var offset=$('#ind_articles li').length;
         $.ajax({
             url:base_url+'phone/Shifan/ajaxIndex',
