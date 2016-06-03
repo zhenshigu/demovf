@@ -9,7 +9,7 @@ class Shifan extends MY_Controller{
     //app首页
     function index(){
 //	$this->output->enable_profiler(TRUE);
-        $res=  $this->Seefunm->tget(array(),'*','article','edittime',3);
+        $res=  $this->Seefunm->tget(array(),'*','article','edittime',10);
         if($res){
             foreach ($res as &$one){
                 $one['headimg']=  $this->config->item('http_article_img').$one['headimg'];
@@ -26,10 +26,10 @@ class Shifan extends MY_Controller{
     function ajaxIndex(){
         header("Content-type: application/json");
         $offset= intval($this->input->post('offset'));
-        if($offset>10){
-            return;
-        }
-        $limit=3;
+//        if($offset>10){
+//            return;
+//        }
+        $limit=10;
         $res=  $this->Seefunm->tget(array(),'*','article','edittime',$limit,$offset);
         if($res){
             foreach ($res as &$one){

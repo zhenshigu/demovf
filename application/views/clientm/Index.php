@@ -83,9 +83,6 @@ $(function(){
     })
     $('#ind_articles').swipeUp(function(){
         var offset=$('#ind_articles li').length;
-        if(offset>10){
-            return;
-        }
         $.ajax({
             url:base_url+'phone/Shifan/ajaxIndex',
             type: 'post',           
