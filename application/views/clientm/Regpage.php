@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-    <link rel="stylesheet" type="text/css" href="<?php echo $base_url.'static/css/apm.css';?>">
+    <?php echo $commonCss;?>
     
 </head>
 
@@ -48,8 +48,8 @@
         <li style="background: #F1F3F2;padding-top: 20px;"><div id="sendCaptcha"   class="sendCode">注册</div></li>
     </ul>
     <input type="hidden" id="_base_url" value="<?php echo $base_url;?>">
-    <script type="text/javascript" src="<?php echo $base_url.'static/js/zepto.js'?>"></script>
-    <script type="text/javascript" src="<?php echo $base_url.'static/js/mysha1.js'?>"></script>
+    <?php echo $commonJs;?>
+    <script type="text/javascript" src='http://static.viewfuns.com/static/js/mysha1.js'></script>
 
 <script type="text/javascript">
 $(function() {

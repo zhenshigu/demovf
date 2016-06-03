@@ -285,7 +285,9 @@ class Account extends MY_Controller{
     function myProfile(){
         header('Cache-Control: no-cache, must-revalidate'); 
         $res['base_url']=  base_url();    
-            $this->load->view('clientm/Myinfo',$res);
+        $res['commonCss']=  $this->load->view('clientm/commonCss','',TRUE);
+        $res['commonJs']=  $this->load->view('clientm/commonJs','',TRUE);
+        $this->load->view('clientm/Myinfo',$res);
         
     }
     //异步获取个人资料
@@ -460,6 +462,8 @@ class Account extends MY_Controller{
             }
         }  else {
             $res['base_url']=  base_url();
+            $res['commonCss']=  $this->load->view('clientm/commonCss','',TRUE);
+            $res['commonJs']=  $this->load->view('clientm/commonJs','',TRUE);
             $this->load->view('clientm/Forgotpwd',$res);
         }       
     }
@@ -510,6 +514,8 @@ class Account extends MY_Controller{
         if($save2Redis){
             $data['base_url']=  base_url();
             $data['imgcode']=$cap['image'];
+            $data['commonCss']=  $this->load->view('clientm/commonCss','',TRUE);
+            $data['commonJs']=  $this->load->view('clientm/commonJs','',TRUE);
             $this->load->view('clientm/Regpage',$data);
         }  else {
             echo 'cache error';
@@ -652,7 +658,8 @@ class Account extends MY_Controller{
        
    }
    function response(){  
-       $res['base_url']=  base_url();
+       $res['base_url']=  base_url();       
+       $res['commonJs']=  $this->load->view('clientm/commonJs','',TRUE);
        $this->load->view('clientm/myResponse',$res);
    }
    function setResponse(){

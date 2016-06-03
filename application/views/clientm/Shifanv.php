@@ -4,9 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-    <link rel="stylesheet" type="text/css" href="<?php echo $base_url.'static/css/apm.css?v=0.1';?>">
-    <link rel="stylesheet" type="text/css" href="<?php echo $base_url.'static/css/load-com.css';?>">
-    <link rel="stylesheet" type="text/css" href="<?php echo $base_url.'static/css/load5.css';?>">
+    <?php echo $commonCss;?>
+    <link rel="stylesheet" type="text/css" href='http://static.viewfuns.com/static/css/load-com.css'>
+    <link rel="stylesheet" type="text/css" href='http://static.viewfuns.com/static/css/load5.css'>
     
 </head>
 
@@ -56,7 +56,7 @@
         <li><a href="<?php echo $base_url.'phone/Goods/hsList'?>"><span data-tag="3">婚摄</span></a></li>
     </ul>-->
     <input type="hidden" id="_base_url" value="<?php echo $base_url;?>">
-    <script type="text/javascript" src="<?php echo $base_url.'static/js/zepto.js'?>"></script>
+    <?php echo $commonJs;?>
     <script type="text/javascript">
         $(function(){
     var base_url = $('#_base_url').val();

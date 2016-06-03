@@ -7,8 +7,7 @@
     <meta http-equiv="Expires" content="0">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Cache-control" content="no-cache">
-    <title>首页</title>
-    <link rel="stylesheet" type="text/css" href="<?php echo $base_url.'static/css/apm.css?v=0.1';?>">
+    <?php echo $commonCss; ?>
     
 </head>
 
@@ -105,8 +104,8 @@
     </div>
 </div>
 <input type="hidden" id="_base_url" value="<?php echo $base_url; ?>">
-<script type="text/javascript" src="<?php echo $base_url.'static/js/zepto.js'?>"></script>
-    <script type="text/javascript" src="<?php echo $base_url.'static/js/mysha1.js'?>"></script>
+<?php echo $commonJs;?>
+<script type="text/javascript" src="http://static.viewfuns.com/static/js/mysha1.js"></script>
 
 <script type="text/javascript">
  var base_url=$('#_base_url').val();

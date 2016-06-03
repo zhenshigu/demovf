@@ -17,7 +17,9 @@ class Shifan extends MY_Controller{
             }
         }
         $data['base_url']=  base_url();
-        $data['res']=$res;     
+        $data['res']=$res; 
+        $data['commonCss']=  $this->load->view('clientm/commonCss','',TRUE);
+        $data['commonJs']=  $this->load->view('clientm/commonJs','',TRUE);
         $this->load->view('clientm/Index',$data);
         
     }
@@ -49,6 +51,8 @@ class Shifan extends MY_Controller{
         }
         $data['base_url']=  base_url();
         $data['res']=$res; 
+        $data['commonCss']=  $this->load->view('clientm/commonCss','',TRUE);
+        $data['commonJs']=  $this->load->view('clientm/commonJs','',TRUE);
         $this->load->view('clientm/Shifanv',$data);
     }
     //ajax异步获取文章

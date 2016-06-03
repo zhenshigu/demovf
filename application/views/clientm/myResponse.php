@@ -37,7 +37,7 @@
         </div>
     </div>
     <input type="hidden" id="_base_url" value="<?php echo $base_url; ?>">
-    <script type="text/javascript" src="<?php echo $base_url.'static/js/zepto.js'?>"></script>
+    <?php echo $commonJs;?>
     <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
     <script type="text/javascript">
         var base_url=$('#_base_url').val();
