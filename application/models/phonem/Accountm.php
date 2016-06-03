@@ -40,5 +40,8 @@ class Accountm extends CI_Model{
         $this->db->where($conf);
         return $this->db->update($table, $arr);
     }
+    function add($arr,$table){
+        return $this->db->insert($table,$arr);
+    }
 }
 

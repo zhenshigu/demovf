@@ -21,7 +21,9 @@
     <li id="gender"><span>性别:</span><span id="append_sex"></span><span><img class="small_arrow" src="<?php echo $base_url.'static/img/next.png';?>"></span></li>
     <li id="setpwd"><span>修改密码</span><span></span><span><img class="small_arrow" src="<?php echo $base_url.'static/img/next.png';?>"></span></li>
 </ul>
+        
 <ul class="myinfo_order">
+    <li id="toResponse"><a  href="<?php echo $base_url.'phone/account/response'?>"><div style="width: 100%;">反馈</div></a></li>
 </ul>
 <ul class="myinfo_foot">
     <li><span  id="logout">退出帐号</span></li>
@@ -423,6 +425,7 @@ $('#submit_phone').tap(function(){
         }
     })
 })
+
 function onEvent(tag, label, duration) {
     prompt("event", JSON.stringify({tag:tag,label:label, duration:duration}));
 }

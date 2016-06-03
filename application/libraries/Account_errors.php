@@ -60,6 +60,6 @@ class Account_errors{
         self::RET_DB_ERROR=>'数据库读取错误',
         self::RET_CAPTCHA_ERROR=>'短信验证码无效',
         self::RET_NO_LOGIN=>'你还没登录',
-        self::RET_NO_REGISTERED=>'该账号还没注册'
+        self::RET_NO_REGISTERED=>'该账号还没注册'        
     );
 }

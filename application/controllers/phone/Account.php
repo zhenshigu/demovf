@@ -651,6 +651,41 @@ class Account extends MY_Controller{
        }
        
    }
-
+   function response(){  
+       $res['base_url']=  base_url();
+       $this->load->view('clientm/myResponse',$res);
+   }
+   function setResponse(){
+       header("Content-type: application/json");
+       if(!$this->is_login){
+           $result=array();
+           $result['code']=  Account_errors::RET_NO_LOGIN;
+           echo json_encode($result);
+           return;                             
+       }
+       $response=  $this->input->post('theResponse');
+       if(!$response){
+           $result=array();
+           $result['code']=  Account_errors::RET_FIELD_NULL;
+           echo json_encode($result);
+           return;
+       }
+       $userid=  $this->_userid;
+       $restime=  time();
+       $arr['responses']=&$response;
+       $arr['resTime']=&$restime;
+       $arr['userid']=&$userid;
+       if($this->Accountm->add($arr,'app_response')){
+           $result=array();
+           $result['code']=  Account_errors::RET_REGISTER_SUCCESS;
+           echo json_encode($result);
+           return;
+       }  else {
+           $result=array();
+           $result['code']=  Account_errors::RET_REGISTER_FAILED;
+           echo json_encode($result);
+           return;
+       }
+   }
 }
 
