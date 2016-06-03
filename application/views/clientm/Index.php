@@ -91,6 +91,7 @@ $(function(){
  		 	$('#tip1').css("display","block");
  		 },
             success:function(data){
+                demo.showToast('加载完毕');
                 $('#tip1').css("display","none");
                 var str='';
                 $.each(data,function(index,item){
