@@ -48,15 +48,9 @@
         }
         ?>
     </ul>
-    <!--
-    <ul class="index_nav">
-        <li><a href="<?php echo $base_url.'phone/shifan'?>"><span  data-tag="0">首页</span></a></li>
-        <li><a href="<?php echo $base_url.'phone/shifan/dgou'?>"><span class="act" data-tag="1">视范</span></a></li>
-        <li><a href="<?php echo $base_url.'phone/Account/myProfile'?>"><span data-tag="2">我的</span></a></li>
-        <li><a href="<?php echo $base_url.'phone/Goods/hsList'?>"><span data-tag="3">婚摄</span></a></li>
-    </ul>-->
     <input type="hidden" id="_base_url" value="<?php echo $base_url;?>">
     <?php echo $commonJs;?>
+    <script src='http://static.viewfuns.com/static/js/baidutouch.js' type="text/javascript" ></script>
     <script type="text/javascript">
         $(function(){
     var base_url = $('#_base_url').val();
@@ -65,7 +59,7 @@
         $('.index_nav li span').removeClass("act");
         $(this).children().addClass("act");       
     })
-    $('#dgl').swipeUp(function(){
+    touch.on('#dgl', 'swipeup', function(ev){
         var offset=$('#dgl li').length;
         $.ajax({
             url:base_url+'phone/Shifan/ajaxDgl',
