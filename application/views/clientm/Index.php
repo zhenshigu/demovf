@@ -49,6 +49,7 @@
     </ul>-->
     <input type="hidden" id="_base_url" value="<?php echo $base_url;?>">
     <?php echo $commonJs;?>
+    <script src='http://static.viewfuns.com/static/js/baidutouch.js' type="text/javascript" ></script>
     <script src='http://static.viewfuns.com/static/js/tween.js' type="text/javascript" ></script>
     <script type="text/javascript">
 $(function(){
@@ -81,7 +82,8 @@ $(function(){
 //            location=base_url+demo.getCity();
         }
     })
-    $('#ind_articles').swipeUp(function(){
+    touch.on('#ind_articles', 'swipeup', function(ev){
+  
         var offset=$('#ind_articles li').length;
         $.ajax({
             url:base_url+'phone/Shifan/ajaxIndex',
@@ -91,7 +93,7 @@ $(function(){
  		 	$('#tip1').css("display","block");
  		 },
             success:function(data){
-                demo.showToast('加载完毕');
+//                demo.showToast('加载完毕');
                 $('#tip1').css("display","none");
                 var str='';
                 $.each(data,function(index,item){

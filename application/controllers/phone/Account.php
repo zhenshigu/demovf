@@ -694,9 +694,5 @@ class Account extends MY_Controller{
            return;
        }
    }
-   function suitest(){
-       $res['commonJs']=  $this->load->view('clientm/commonJs','',TRUE);
-       $this->load->view('clientm/suitest',$res);
-   }
 }
 
