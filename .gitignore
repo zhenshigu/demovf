@@ -10,3 +10,5 @@ phpinfo.php
 test/
 static/article/
 oss/
+application/views/clientm/suitest.php
+suitest.html
