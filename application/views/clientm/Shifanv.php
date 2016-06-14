@@ -49,7 +49,7 @@
         ?>
     </ul>
     <input type="hidden" id="_base_url" value="<?php echo $base_url;?>">
-    <script src="//cdn.bootcss.com/zepto/1.1.6/zepto.min.js"></script>
+    <script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
     <script src='http://static.viewfuns.com/static/js/baidutouch.js' type="text/javascript" ></script>
     <script type="text/javascript">
 $(function(){
