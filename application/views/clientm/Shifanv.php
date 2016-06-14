@@ -49,16 +49,13 @@
         ?>
     </ul>
     <input type="hidden" id="_base_url" value="<?php echo $base_url;?>">
-    <?php echo $commonJs;?>
+    <script src="//cdn.bootcss.com/zepto/1.1.6/zepto.min.js"></script>
     <script src='http://static.viewfuns.com/static/js/baidutouch.js' type="text/javascript" ></script>
     <script type="text/javascript">
-        $(function(){
+$(function(){
     var base_url = $('#_base_url').val();
     var current=-1;
-    $('.index_nav li').tap(function() {
-        $('.index_nav li span').removeClass("act");
-        $(this).children().addClass("act");       
-    })
+    //swipe up to add more
     touch.on('#dgl', 'swipeup', function(ev){
         var offset=$('#dgl li').length;
         $.ajax({
@@ -73,20 +70,21 @@
                 $('#tip1').css("display","none");
                 var str='';
                 $.each(data,function(index,item){
-                    str+='<li><a href='+item['url']+'><img src="'+item['headimg']+'"><p>'+item['title']+'</p></a></li>'
-                })
+                    str+='<li><a href='+item['url']+'><img src="'+item['headimg']+'"><p>'+item['title']+'</p></a></li>';
+                });
                 $('#dgl').append(str);
             },
             error:function(){
                     $('#tip1').css("display","none");
             }
-        })
-    })
-    $('.classify li').tap(function() {
+        });
+    });
+    $('.classify li').on('tap',function() {
         $('.classify li span').removeClass("act_red");
         $(this).children().addClass("act_red");
         var _tag = $(this).children().data("tag");
-        if(_tag==-2||_tag=='-2'){
+         console.log(1);
+        if(_tag==-2){           
             $('.to_hidden').toggle();
             return;
         }
@@ -102,16 +100,16 @@
                 $('#tip1').css("display","none");
                 var str='';
                 $.each(data,function(index,item){
-                    str+='<li><a href='+item['url']+'><img src="'+item['headimg']+'"><p>'+item['title']+'</p></a></li>'
-                })
+                    str+='<li><a href='+item['url']+'><img src="'+item['headimg']+'"><p>'+item['title']+'</p></a></li>';
+                });
                 $('#dgl').html(str);
             },
             error:function(){
                     $('#tip1').css("display","none");
             }
-        })
-    })
-})
+        });
+    });
+});
 </script>
 </body>
 </html>

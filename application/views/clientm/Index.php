@@ -40,48 +40,13 @@
         }
         ?>              
     </ul>
- <!--   
-    <ul class="index_nav">
-        <li><a href="<?php echo $base_url.'phone/shifan'?>"><span class="act" data-tag="0">首页</span></a></li>
-        <li><a href="<?php echo $base_url.'phone/shifan/dgou'?>"><span data-tag="1">视范</span></a></li>
-        <li><a href="<?php echo $base_url.'phone/Account/myProfile'?>"><span data-tag="2">我的</span></a></li>
-        <li><a href="<?php echo $base_url.'phone/Goods/hsList'?>"><span data-tag="3">婚摄</span></a></li>
-    </ul>-->
     <input type="hidden" id="_base_url" value="<?php echo $base_url;?>">
-    <?php echo $commonJs;?>
+    <script src="//cdn.bootcss.com/zepto/1.1.6/zepto.min.js"></script>
     <script src='http://static.viewfuns.com/static/js/baidutouch.js' type="text/javascript" ></script>
     <script src='http://static.viewfuns.com/static/js/tween.js' type="text/javascript" ></script>
     <script type="text/javascript">
 $(function(){
     var base_url = $('#_base_url').val();
-    //获取定位
-//    var dingwei=demo.getCity();
-//    $('#_dingwei').html("当前城市:"+dingwei);
-    //获取屏幕高度
-//    $(function(){
-//        var sh=document.documentElement.clientHeight;
-//        var timetop = sh - 45;
-//        $('.index_nav').css('top', timetop + "px");
-//    })
-    $('.index_nav li').tap(function() {
-    $('.index_nav li span').removeClass("act");
-    $(this).children().addClass("act");
-    var _tag = $(this).children().data("tag");
-    current = _tag;
-    switch (_tag) {
-        case 0:
-
-            break;
-        case 1:
-
-            break;
-        case 2:
-
-            break;
-        case 3:
-//            location=base_url+demo.getCity();
-        }
-    })
     touch.on('#ind_articles', 'swipeup', function(ev){
   
         var offset=$('#ind_articles li').length;
@@ -220,11 +185,11 @@ $(document).ready(function() {
 			}, 3333);
 		}
 $(function(){
-	$('.picslist').tap(function() {
+	$('.picslist').on('tap',function() {
 	    var picslist_tag=$(this).data('tag');
 	    location.href='<?php echo $base_url."static/article/"?>'+links[picslist_tag];
-	})
-})
+	});
+});
 </script>
 </body>
 </html>
