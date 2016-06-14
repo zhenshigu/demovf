@@ -63,10 +63,16 @@ class Shifan extends MY_Controller{
         $limit=10;
         if($style<=0){
             $arr=array();
-        }  else {
+        }
+        elseif ($style==15) {
+            $arr=array('styleid<='=>$style);
+        }
+        else {
             $arr=array('styleid'=>$style);
         }
-        $res=  $this->Seefunm->tget($arr,'*','article','edittime',$limit,$offset);
+        $field='article.artid,title,headimg,url,edittime';
+        $joinConf='article.artid=articleStyle.artid';
+        $res=  $this->Seefunm->mtget($arr,'*','article','articleStyle',$joinConf,'edittime',$limit,$offset);
         if($res){
             foreach ($res as &$one){
                 $one['headimg']=  $this->config->item('http_article_img').$one['headimg'];

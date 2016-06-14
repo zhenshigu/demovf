@@ -14,21 +14,28 @@
     
     <ul class="classify">
         <li><span class="act_red" data-tag="-1">全部</span></li>
-        <li><span  data-tag="1">韩国风</span></li>
-        <li><span data-tag="2">欧美风</span></li>
-        <li><span data-tag="3">复古风</span></li>        
+        <li><span data-tag="18">攻略</span></li>
+        <li><span data-tag="17">影楼</span></li>
+        <li><span data-tag="15">风格</span></li>      
         <li id="more"><span data-tag="-2"><img src="<?php echo $base_url.'static/img/icon_dropdown.png'?>"></span></li>
-        <li class="to_hidden"><span data-tag="4">清新风</span></li>
-        <li class="to_hidden"><span data-tag="5">甜美风</span></li>
-        <li class="to_hidden"><span data-tag="6">校园风</span></li>
-        <li class="to_hidden"><span data-tag="7">日系</span></li>
-        <li class="to_hidden"><span data-tag="8">美系</span></li>
-        <li class="to_hidden"><span data-tag="9">高原风</span></li>
-        <li class="to_hidden"><span data-tag="10">流行榜</span></li>
-        <li class="to_hidden"><span data-tag="11">热销榜</span></li>
-        <li class="to_hidden"><span data-tag="12">unknown</span></li>
-        <li class="to_hidden"><span data-tag="13">unknown</span></li>
-        <li class="to_hidden"><span data-tag="14">unknown</span></li>
+        <li class="to_hidden"><span data-tag="21">婚纱</span></li>
+        <li class="to_hidden"><span data-tag="16">拍摄地</span></li>
+        <li class="to_hidden"><span  data-tag="1">韩式风</span></li>
+        <li class="to_hidden"><span data-tag="2">欧式风</span></li>
+        <li class="to_hidden"><span data-tag="3">中式风</span></li> 
+        <li class="to_hidden"><span data-tag="4">碧海蓝天</span></li>
+        <li class="to_hidden"><span data-tag="5">海景风</span></li>
+        <li class="to_hidden"><span data-tag="6">古典风</span></li>
+        <li class="to_hidden"><span data-tag="7">浪漫风</span></li>
+        <li class="to_hidden"><span data-tag="8">清新自然</span></li>
+        <li class="to_hidden"><span data-tag="9">山水风</span></li>
+        <li class="to_hidden"><span data-tag="10">奢华风</span></li>
+        <li class="to_hidden"><span data-tag="11">公主风</span></li>
+        <li class="to_hidden"><span data-tag="12">水底风</span></li>
+        <li class="to_hidden"><span data-tag="13">美人鱼</span></li>
+        <li class="to_hidden"><span data-tag="19">体验</span></li>
+        <li class="to_hidden"><span data-tag="20">旅拍</span></li>
+        <li class="to_hidden"><span data-tag="22">星座</span></li>
     </ul>
     <div id="tip1" class="load-container load5" style="z-index:125;position: fixed;display:none">
         <div class="loader">Loading...</div>
