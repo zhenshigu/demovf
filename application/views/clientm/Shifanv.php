@@ -87,6 +87,7 @@
         $(this).children().addClass("act_red");
         var _tag = $(this).children().data("tag");
         if(_tag==-2||_tag=='-2'){
+            $('.to_hidden').toggle();
             return;
         }
         current = _tag;
@@ -109,9 +110,6 @@
                     $('#tip1').css("display","none");
             }
         })
-    })
-    $('#more').tap(function(){
-        $('.to_hidden').toggle();
     })
 })
 </script>
