@@ -47,8 +47,12 @@
     <script type="text/javascript">
 $(function(){
     var base_url = $('#_base_url').val();
+    var swipeup=false;
     touch.on('#ind_articles', 'swipeup', function(ev){
-  
+        if(swipeup){            
+            return;
+        }
+        swipeup=true;
         var offset=$('#ind_articles li').length;
         $.ajax({
             url:base_url+'phone/Shifan/ajaxIndex',
@@ -64,9 +68,11 @@ $(function(){
                     str+='<li><a href='+item['url']+'><img src="'+item['headimg']+'"><p>'+item['title']+'</p></a></li>'
                 })
                 $('#ind_articles').append(str);
+                swipeup=false;
             },
             error:function(){
-                    $('#tip1').css("display","none");
+                $('#tip1').css("display","none");
+                swipeup=false;
             }
         })
     })
