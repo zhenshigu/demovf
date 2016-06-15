@@ -62,8 +62,14 @@
 $(function(){
     var base_url = $('#_base_url').val();
     var current=-1;
+    var swipeup=false;
     //swipe up to add more
     touch.on('#dgl', 'swipeup', function(ev){
+        if(swipeup){
+            
+            return;
+        }
+        swipeup=true;
         var offset=$('#dgl li').length;
         $.ajax({
             url:base_url+'phone/Shifan/ajaxDgl',
@@ -80,9 +86,11 @@ $(function(){
                     str+='<li><a href='+item['url']+'><img src="'+item['headimg']+'"><p>'+item['title']+'</p></a></li>';
                 });
                 $('#dgl').append(str);
+                swipeup=false;
             },
             error:function(){
-                    $('#tip1').css("display","none");
+                $('#tip1').css("display","none");
+                swipeup=false;
             }
         });
     });
