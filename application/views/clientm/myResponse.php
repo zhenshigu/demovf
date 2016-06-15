@@ -11,14 +11,26 @@
 <body>
     <div class="page-group">
         <div class="page page-current">
+            
             <div class="content">
                 <div class="list-block">
                     <ul>
+                        <li>
+                            <div class="item-content">
+                              <div class="item-media"><i class="icon icon-form-email"></i></div>
+                              <div class="item-inner">
+                                <div class="item-title label">邮箱</div>
+                                <div class="item-input">
+                                    <input id="theEmail" type="email" placeholder="方便我们联系您(可选)">
+                                </div>
+                              </div>
+                            </div>
+                        </li>
                         <li class="align-top">
                             <div class="item-content">
                                 <div class="item-media"><i class="icon icon-form-comment"></i></div>
                                 <div class="item-inner">
-                                    <div class="item-title label">反馈</div>
+                                    <div class="item-title label">我的反馈</div>
                                     <div class="item-input">
                                         <textarea id="theResponse"></textarea>
                                     </div>
@@ -43,15 +55,20 @@
         var base_url=$('#_base_url').val();
         $('#toSubmit').tap(function(){
             var theResponse=$('#theResponse').val();
+            var theEmail=$('#theEmail').val();
             $.ajax({
                 url: base_url + 'phone/Account/setResponse',
                 type: 'post',
                 data: {
                     sign_time_id:demo.getSign(),
-                    theResponse:theResponse
+                    theResponse:theResponse,
+                    theEmail:theEmail
                 },
                 success: function(data) {
                     switch(data.code){
+                        case 10006:
+                            demo.showToast('邮箱格式错误');
+                            break;
                         case 10025:
                             demo.showToast('你还没登录，不能提交反馈');
                             demo.ToLogin();
@@ -64,6 +81,7 @@
                             break;
                         case 1:
                             demo.showToast('提交反馈成功');
+                            history.go(-1);
                             break;
                     }
                 },

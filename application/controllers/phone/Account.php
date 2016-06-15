@@ -671,6 +671,15 @@ class Account extends MY_Controller{
            return;                             
        }
        $response=  $this->input->post('theResponse');
+       $email=  $this->input->post('theEmail');//optional
+       if($email){
+           if(!$this->_isEmail($email)){
+                $result=array();
+                $result['code']=  Account_errors::RET_EMAIL_FORMAT;                
+                echo json_encode($result);
+                return;
+           }
+       }
        if(!$response){
            $result=array();
            $result['code']=  Account_errors::RET_FIELD_NULL;
@@ -680,6 +689,7 @@ class Account extends MY_Controller{
        $userid=  $this->_userid;
        $restime=  time();
        $arr['responses']=&$response;
+       $arr['email']=&$email;
        $arr['resTime']=&$restime;
        $arr['userid']=&$userid;
        if($this->Accountm->add($arr,'app_response')){
