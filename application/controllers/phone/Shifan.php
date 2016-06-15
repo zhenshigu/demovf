@@ -22,7 +22,7 @@ class Shifan extends MY_Controller{
         $data['commonJs']=  $this->load->view('clientm/commonJs','',TRUE);
         $this->load->view('clientm/Index',$data);
         
-    }
+    }    
     function ajaxIndex(){
         header("Content-type: application/json");
         $offset= intval($this->input->post('offset'));
@@ -70,15 +70,20 @@ class Shifan extends MY_Controller{
         else {
             $arr=array('styleid'=>$style);
         }
-        $field='article.artid,title,headimg,url,edittime';
-        $joinConf='article.artid=articleStyle.artid';
-        $res=  $this->Seefunm->mtget($arr,'*','article','articleStyle',$joinConf,'edittime',$limit,$offset);
+        if($style==-1){            
+            $res=  $this->Seefunm->tget(array(),'*','article','artid',$limit,$offset);
+        }  else {
+            $field='article.artid,title,headimg,url,edittime';
+            $joinConf='article.artid=articleStyle.artid';
+            $res=  $this->Seefunm->mtget($arr,'*','article','articleStyle',$joinConf,'edittime',$limit,$offset);
+            
+        }
         if($res){
             foreach ($res as &$one){
                 $one['headimg']=  $this->config->item('http_article_img').$one['headimg'];
                 $one['url']=  $this->config->item('http_article').$one['url'];
             }
-        }
+        }        
         echo json_encode($res);
     }
     function aboutus(){
