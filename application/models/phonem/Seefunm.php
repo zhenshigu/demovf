@@ -9,7 +9,7 @@ class Seefunm extends CI_Model{
         $this->db->select($field);
         $this->db->from($table);       
         $this->db->where($arr);
-        $this->db->order_by($orderby);
+        $this->db->order_by($orderby,'DESC');
         $this->db->limit($limit, $offset);       
         $query=$this->db->get();
         if ($query->num_rows()>0){
@@ -24,7 +24,7 @@ class Seefunm extends CI_Model{
         $this->db->from($t1);       
         $this->db->join($t2,$join);
         $this->db->where($arr);
-        $this->db->order_by($orderby);
+        $this->db->order_by($orderby,'DESC');
         $this->db->limit($limit, $offset);       
         $query=$this->db->get();
         if ($query->num_rows()>0){

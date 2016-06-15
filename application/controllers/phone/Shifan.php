@@ -9,7 +9,7 @@ class Shifan extends MY_Controller{
     //app首页
     function index(){
 //	$this->output->enable_profiler(TRUE);
-        $res=  $this->Seefunm->tget(array(),'*','article','edittime',10);
+        $res=  $this->Seefunm->tget(array(),'*','article','artid',10);
         if($res){
             foreach ($res as &$one){
                 $one['headimg']=  $this->config->item('http_article_img').$one['headimg'];
@@ -30,7 +30,7 @@ class Shifan extends MY_Controller{
 //            return;
 //        }
         $limit=10;
-        $res=  $this->Seefunm->tget(array(),'*','article','edittime',$limit,$offset);
+        $res=  $this->Seefunm->tget(array(),'*','article','artid',$limit,$offset);
         if($res){
             foreach ($res as &$one){
                 $one['headimg']=  $this->config->item('http_article_img').$one['headimg'];
