@@ -6,7 +6,7 @@
 
 class Account extends MY_Controller{
      CONST  PHONE_LENGTH=11;
-     CONST EMAIL_REGX="^([_a-z0-9-]+)(\.[_a-z0-9-]+)*@([a-z0-9-]+)(\.[a-z0-9-]+)*(\.[a-z]{2,4})$";
+     CONST EMAIL_REGX="/^([0-9A-Za-z\\-_\\.]+)@([0-9a-z]+\\.[a-z]{2,3}(\\.[a-z]{2})?)$/i";
      CONST NAME_REGX='/^[a-zA-Z0-9_]{3,16}$/';
      private $headimgPath='';
 //     private $uid='';
