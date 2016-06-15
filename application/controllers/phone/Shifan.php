@@ -42,7 +42,7 @@ class Shifan extends MY_Controller{
     //视范页面
     function dgou(){
         $limit=10;
-        $res=  $this->Seefunm->tget(array(),'*','article','edittime',$limit);
+        $res=  $this->Seefunm->tget(array(),'*','article','artid',$limit);
         if($res){
             foreach ($res as &$one){
                 $one['headimg']=  $this->config->item('http_article_img').$one['headimg'];
