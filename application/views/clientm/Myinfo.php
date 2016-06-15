@@ -109,12 +109,16 @@
 
 <script type="text/javascript">
  var base_url=$('#_base_url').val();
-$(function(){
+$(function(){    
     if(demo.getUserid()==""){
         $('#nologin').show();
         $('#logined').hide();
         return;
     }
+    //根据窗口变化调整遮罩层高度
+    window.onresize = function(){  
+        $('.mask').css('height',document.body.scrollHeight);
+    };
     $.ajax({
         url: base_url + 'phone/Account/ajaxProfile',
         type: 'post',
