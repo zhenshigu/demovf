@@ -298,7 +298,8 @@ $('#modifyPwd').tap(function(){
                         break; 
                     case 1:
                         demo.showToast("修改密码成功");
-   
+                        $('#mask').hide();
+                        $('#forsetpwd').hide();
                         break;
                 }
             }
