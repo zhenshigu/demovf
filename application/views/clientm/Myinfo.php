@@ -22,8 +22,8 @@
 </ul>
         
 <ul class="myinfo_order">
-    <li id="toResponse"><a  href="<?php echo $base_url.'phone/account/response'?>"><div style="width: 100%;">我去反馈</div></a></li>
-    <li id="toAboutus"><a  href="<?php echo $base_url.'phone/shifan/aboutus'?>"><div style="width: 100%;">关于我们</div></a></li>
+    <li id="toResponse"><a href="<?php echo $base_url.'phone/account/response'?>"><div style="width: 100%;">我去反馈</div></a></li>
+    <li id="toAboutus"><a  href="<?php echo $base_url.'phone/account/aboutus'?>"><div style="width: 100%;">关于我们</div></a></li>
 </ul>
 <ul class="myinfo_foot">
     <li><span  id="logout">退出帐号</span></li>

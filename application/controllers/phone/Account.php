@@ -704,5 +704,8 @@ class Account extends MY_Controller{
            return;
        }
    }
+    function aboutus(){
+        $this->load->view('clientm/Aboutus');
+    }
 }
 

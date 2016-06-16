@@ -86,7 +86,4 @@ class Shifan extends MY_Controller{
         }        
         echo json_encode($res);
     }
-    function aboutus(){
-        $this->load->view('clientm/Aboutus');
-    }
 }
