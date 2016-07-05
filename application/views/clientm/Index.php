@@ -101,7 +101,7 @@ $(document).ready(function() {
 			$(lst).each(function(k, v) {
 				htm += "<li class='picslist' name='is_tj_r' data-tag=" + i + " style='padding-right: 0;'>";
                                
-				htm += '<img src=http://static.viewfuns.com/article/index_img/'+v+'>';
+				htm += '<img src=http://static.viewfuns.com/articles/index_img/'+v+'>';
 				htm += '</li>';
 				$('.ad_btn_wrap').append('<a href="javascript:;"></a>');
                                 i++;
@@ -188,7 +188,7 @@ $(document).ready(function() {
 $(function(){
 	$('.picslist').on('tap',function() {
 	    var picslist_tag=$(this).data('tag');
-	    location.href='http://static.viewfuns.com/article/'+links[picslist_tag];
+	    location.href='http://static.viewfuns.com/articles/'+links[picslist_tag];
 	});
 });
 </script>
