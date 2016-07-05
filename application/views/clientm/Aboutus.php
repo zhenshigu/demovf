@@ -24,6 +24,7 @@
                 <div class="card">
                   <div class="card-content">
                     <div class="card-content-inner">微信公众号:iviewfun</div>
+                    <div class="card-content-inner">微博:视范</div>
                   </div>
                 </div>
             </div>
