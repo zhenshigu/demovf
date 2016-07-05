@@ -80,20 +80,20 @@ $(function(){
     
  //图片轮播
                         var links=[
-				'viewfuns.html',
-				'viewfuns.html',
-				'viewfuns.html',
-				'viewfuns.html',
-				'viewfuns.html'
+				'first022.html',
+				'first039.html',
+				'first050.html',
+				'fh01.html',
+				'fh21.html'
 			];
 $(document).ready(function() {
                        
 			var lst = [
-				'IMG_0363.jpg',
-				'IMG_0364.jpg',
-				'IMG_0365.jpg',
-				'IMG_0366.jpg',
-				'IMG_0367.jpg'
+				'first022.jpg',
+				'first039.jpg',
+				'first050.jpg',
+				'fh01.jpg',
+				'fh21.jpg'
 			];
                         
 			var i=0;
@@ -106,11 +106,6 @@ $(document).ready(function() {
 				$('.ad_btn_wrap').append('<a href="javascript:;"></a>');
                                 i++;
 			});
-			/*
-			 * 注意下面一截代码！
-			 * 这些代码一个都不能少，否则css会出问题。
-			 * 只需要把lst换成对应的图片集合就ok了
-			 */
 			$("#in ul").empty().append(htm);
 			$("#in ul").css("width", (lst.length * 100) + "%");
 			$("#in ul li").css("width", (100 / lst.length) + "%");

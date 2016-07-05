@@ -23,7 +23,7 @@
                 <div class="content-block-title">关注我们</div>
                 <div class="card">
                   <div class="card-content">
-                    <div class="card-content-inner">微信公众号:</div>
+                    <div class="card-content-inner">微信公众号:iviewfun</div>
                   </div>
                 </div>
             </div>
