@@ -20,6 +20,7 @@ class Seefunm extends CI_Model{
     }
     //两表查找
     function mtget($arr,$field='*',$t1,$t2,$join,$orderby='',$limit=10,$offset=''){
+        $this->db->distinct();
         $this->db->select($field);
         $this->db->from($t1);       
         $this->db->join($t2,$join);

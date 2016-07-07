@@ -57,6 +57,7 @@ class Shifan extends MY_Controller{
     }
     //ajax异步获取文章
     function ajaxDgl(){
+//        $this->output->enable_profiler(TRUE);
         header("Content-type: application/json");
         $offset=  $this->input->post('offset');
         $style= intval($this->input->post('type'));
@@ -75,7 +76,7 @@ class Shifan extends MY_Controller{
         }  else {
             $field='article.artid,title,headimg,url,edittime';
             $joinConf='article.artid=articleStyle.artid';
-            $res=  $this->Seefunm->mtget($arr,'*','article','articleStyle',$joinConf,'edittime',$limit,$offset);
+            $res=  $this->Seefunm->mtget($arr,$field,'article','articleStyle',$joinConf,'article.artid',$limit,$offset);
             
         }
         if($res){
