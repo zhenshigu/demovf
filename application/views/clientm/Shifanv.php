@@ -20,16 +20,16 @@
         <li id="more"><span data-tag="-2"><img src="<?php echo $base_url.'static/img/icon_dropdown.png'?>"></span></li>
         <li class="to_hidden"><span data-tag="21">婚纱</span></li>
         <li class="to_hidden"><span data-tag="16">拍摄地</span></li>
-        <li class="to_hidden"><span  data-tag="1">韩式风</span></li>
+        <!--<li class="to_hidden"><span  data-tag="1">韩式风</span></li>
         <li class="to_hidden"><span data-tag="2">欧式风</span></li>
         <li class="to_hidden"><span data-tag="3">中式风</span></li> 
-        <li class="to_hidden"><span data-tag="4">碧海蓝天</span></li>
+        <li class="to_hidden"><span data-tag="4">碧海蓝天</span></li>-->
         <li class="to_hidden"><span data-tag="5">海景风</span></li>
-        <li class="to_hidden"><span data-tag="6">古典风</span></li>
+        <!--<li class="to_hidden"><span data-tag="6">古典风</span></li>
         <li class="to_hidden"><span data-tag="7">浪漫风</span></li>
         <li class="to_hidden"><span data-tag="8">清新自然</span></li>
         <li class="to_hidden"><span data-tag="9">山水风</span></li>
-        <li class="to_hidden"><span data-tag="10">奢华风</span></li>
+        <li class="to_hidden"><span data-tag="10">奢华风</span></li>-->
         <li class="to_hidden"><span data-tag="11">公主风</span></li>
         <li class="to_hidden"><span data-tag="12">水底风</span></li>
         <li class="to_hidden"><span data-tag="13">美人鱼</span></li>
