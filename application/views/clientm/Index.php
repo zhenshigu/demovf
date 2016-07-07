@@ -80,7 +80,7 @@ $(function(){
     
  //图片轮播
                         var links=[
-				'first022.html',
+				'fh10.html',
 				'first039.html',
 				'first050.html',
 				'fh01.html',
@@ -89,7 +89,7 @@ $(function(){
 $(document).ready(function() {
                        
 			var lst = [
-				'first022.jpg',
+				'fh10.jpg',
 				'first039.jpg',
 				'first050.jpg',
 				'fh01.jpg',
