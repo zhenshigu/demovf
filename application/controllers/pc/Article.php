@@ -13,7 +13,7 @@ class Article extends CI_Controller{
         if($res){
             foreach ($res as &$one){
                 $one['headimg']=  $this->config->item('http_article_img').$one['headimg'];
-                $one['url']= "articleDetail/".$one['url'];
+                $one['url']= $this->config->item('myhost')."/pc/articleDetail/".$one['url'];
             }
         }
         $data['res']=$res; 
@@ -39,11 +39,12 @@ class Article extends CI_Controller{
     }
     //load the article details;
     function articleDetail($title){
-        $title=  $this->security->xss_clean($title);
+        var_dump($title);
+        $title=$this->security->xss_clean($title);
         if(empty($title)){
             return;
         }
-        $title="http://static.viewfuns.com/articles/".$title;
+        $title="http://www.viewfuns.com/".$title;
         $res['article']=&$title;
         $this->load->view('pc/article_detail',$res);
     }
