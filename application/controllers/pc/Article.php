@@ -3,6 +3,7 @@
 class Article extends CI_Controller{
     public function __construct() {
         parent::__construct();
+	$this->load->helper('url');
         $this->load->model('phonem/Seefunm');
         $this->config->load('my_sys_config');
 
@@ -13,7 +14,7 @@ class Article extends CI_Controller{
         if($res){
             foreach ($res as &$one){
                 $one['headimg']=  $this->config->item('http_article_img').$one['headimg'];
-                $one['url']= $this->config->item('myhost')."/pc/articleDetail/".$one['url'];
+                $one['url']="article/articleDetail/".$one['url'];
             }
         }
         $data['res']=$res; 
@@ -44,7 +45,7 @@ class Article extends CI_Controller{
         if(empty($title)){
             return;
         }
-        $title="http://www.viewfuns.com/".$title;
+        $title="http://www.viewfuns.com/webarticle/".$title;
         $res['article']=&$title;
         $this->load->view('pc/article_detail',$res);
     }
