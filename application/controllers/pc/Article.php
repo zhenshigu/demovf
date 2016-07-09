@@ -48,4 +48,7 @@ class Article extends CI_Controller{
         $res['article']=&$title;
         $this->load->view('pc/article_detail',$res);
     }
+    function aboutus(){
+        $this->load->view('pc/abountUs');
+    }
 }
