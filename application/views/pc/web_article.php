@@ -33,6 +33,7 @@
       <ul class="nav navbar-nav">
         <li ><a href="/">首页 <span class="sr-only">(current)</span></a></li>
         <li class="active"><a href="/pc/article">热点</a></li>
+        <li><a href="/pc/aboutus">关于我们</a></li>
       </ul>
 
     </div><!-- /.navbar-collapse -->

@@ -40,7 +40,6 @@ class Article extends CI_Controller{
     }
     //load the article details;
     function articleDetail($title){
-        var_dump($title);
         $title=$this->security->xss_clean($title);
         if(empty($title)){
             return;
