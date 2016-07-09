@@ -35,8 +35,9 @@
             <div class="col-sm-8 col-sm-offset-2">
                 <div class="jumbotron">
                     <h1>关于我们</h1>
-                    <p>视范网，界面简洁大方，功能集中。提供关于婚纱摄影，拍照潮流，自拍玩法等攻略和文章,
-                        让你拍照更有范儿.小范君所提供的文章都是棒棒哒,欢迎摄影人士提供文章. 
+                    <p>视范是本着探索摄影艺术的本质,塑造视觉的模范,让这个世界定格更多美好的瞬间！ 
+                        想要寻找拍照的潮流,拍照的时尚,拍照的玩法,婚纱照怎么拍才好看,请不要错过我,
+                        小范君所提供的文章都是棒棒哒,让你拍照更有范儿.欢迎摄影人士提供文章. 
                         如需合作,请联系小范君.如有侵权,请联系小范君删除. 联系邮箱:<a href="mailto:account@viewfuns.com">account@viewfuns.com</a></p>
                     <p><a class="btn btn-primary btn-lg" href="/pc/article/aboutmore" role="button">了解更多</a></p>
                   </div>
