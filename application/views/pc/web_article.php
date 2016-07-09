@@ -95,6 +95,9 @@
             type: 'post',           
             data: {offset:offset},
             success:function(data){
+                if(!data){
+                    return;
+                }
                 var str='';
                 $.each(data,function(index,item){
                     str+='<a class="list-group-item" href='+item['url']+'><div class="row"><div class="col-sm-7"><h4 class="list-group-item-heading">'+item['title']+'</h4><p class="list-group-item-text"></p></div><div class="col-sm-5 align_right"><img src='+item['headimg']+' alt="..." class="img-rounded articleImg"></div></div></a>'
