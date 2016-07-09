@@ -52,6 +52,7 @@
                       <br><a href="#">下载</a>
                     </div>
                   </div>
+                
                 <div class="panel panel-default">
                     <div class="panel-heading">
                       <h3 class="panel-title">视范公众号</h3>
@@ -84,6 +85,7 @@
                       
                     </div>
                   </div>
+                
             </div>
         </div>
     </div>

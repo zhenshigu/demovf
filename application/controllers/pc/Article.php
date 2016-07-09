@@ -18,22 +18,19 @@ class Article extends CI_Controller{
             }
         }
         $data['res']=$res; 
-      
+        $data['base_url']=  base_url();
         $this->load->view('pc/web_article',$data);
     }
     //load more articles by ajax
     function ajaxIndex(){
         header("Content-type: application/json");
         $offset= intval($this->input->post('offset'));
-//        if($offset>10){
-//            return;
-//        }
         $limit=10;
         $res=  $this->Seefunm->tget(array(),'*','article','artid',$limit,$offset);
         if($res){
             foreach ($res as &$one){
                 $one['headimg']=  $this->config->item('http_article_img').$one['headimg'];
-                $one['url']=  $this->config->item('http_article').$one['url'];
+                $one['url']="article/articleDetail/".$one['url'];
             }
         }
         echo json_encode($res);
