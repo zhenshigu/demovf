@@ -51,4 +51,7 @@ class Article extends CI_Controller{
     function aboutus(){
         $this->load->view('pc/abountUs');
     }
+    function aboutmore(){
+        $this->load->view('pc/aboutMore');
+    }
 }
