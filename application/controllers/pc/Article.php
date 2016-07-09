@@ -18,7 +18,7 @@ class Article extends CI_Controller{
             }
         }
         $data['res']=$res; 
-        $data['base_url']=  base_url();
+        $data['base_url']= $this->config->item('pc_host');
         $this->load->view('pc/web_article',$data);
     }
     //load more articles by ajax
