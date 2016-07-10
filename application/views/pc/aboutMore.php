@@ -49,7 +49,7 @@
                       简洁友好的模块设计,提供关于婚纱摄影，拍照潮流，自拍玩法等攻略和文章;
                       <br>功能丰富的管理系统，点赞收藏分享一键搞定;
                       <br>热点文章实时推送，让你不错过精彩图文
-                      <br><a href="#">下载</a>
+                      <br><a href="http://android-apps.25pp.com/fs08/2016/07/10/7/110_9a3b472c292c20f4d3c933cce555f7c7.apk?yingid=pp_client&packageid=200261498&md5=ca1be2797561bc2d8d4d99c0d3cdf661&minSDK=14&size=2920982&shortMd5=b0f680f4489aee37913ebd545e4363d9&crc32=789577796">下载</a>
                     </div>
                   </div>
                 
