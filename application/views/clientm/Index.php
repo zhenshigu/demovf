@@ -79,29 +79,17 @@ $(function(){
 })
     
  //图片轮播
-                        var links=[
-				'fh10.html',
-				'first039.html',
-				'first050.html',
-				'fh01.html',
-				'fh21.html'
-			];
-$(document).ready(function() {
-                       
-			var lst = [
-				'fh10.jpg',
-				'first039.jpg',
-				'first050.jpg',
-				'fh01.jpg',
-				'fh21.jpg'
-			];
+                         
+                        var links=<?php echo $articleurl;?>;
+$(document).ready(function() {                      
+			var lst = <?php echo $imgurl;?>;
                         
 			var i=0;
 			var htm = '';
 			$(lst).each(function(k, v) {
 				htm += "<li class='picslist' name='is_tj_r' data-tag=" + i + " style='padding-right: 0;'>";
                                
-				htm += '<img src=http://static.viewfuns.com/articles/index_img/'+v+'>';
+				htm += '<img src='+v+'>';
 				htm += '</li>';
 				$('.ad_btn_wrap').append('<a href="javascript:;"></a>');
                                 i++;
@@ -188,7 +176,7 @@ $(document).ready(function() {
 $(function(){
 	$('.picslist').on('tap',function() {
 	    var picslist_tag=$(this).data('tag');
-	    location.href='http://static.viewfuns.com/articles/'+links[picslist_tag];
+	    location.href=links[picslist_tag];
 	});
 });
 </script>

@@ -5,6 +5,7 @@ class Shifan extends MY_Controller{
         $this->load->model('phonem/Seefunm');
         $this->load->helper('url');
         $this->config->load('my_sys_config');
+        $this->config->load('lunbo');        
     }    
     //app首页
     function index(){
@@ -16,8 +17,11 @@ class Shifan extends MY_Controller{
                 $one['url']=  $this->config->item('http_article').$one['url'];
             }
         }
+        $lunbo=$this->config->item('lunbo');
         $data['base_url']=  base_url();
         $data['res']=$res; 
+        $data['articleurl']=  json_encode($lunbo['articleurl']);
+        $data['imgurl']=  json_encode($lunbo['imgurl']);
         $data['commonCss']=  $this->load->view('clientm/commonCss','',TRUE);
         $data['commonJs']=  $this->load->view('clientm/commonJs','',TRUE);
         $this->load->view('clientm/Index',$data);
