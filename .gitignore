@@ -1,4 +1,5 @@
 application/config/database.php
+vendor/
 application/config/config.php
 application/config/alimessage.php
 application/config/my_sys_config.php
@@ -12,3 +13,10 @@ static/article/
 oss/
 application/views/clientm/suitest.php
 suitest.html
+application/controllers/Article_gen.php
+application/views/other/
+homeimg/
+static/js/baidutouch.js
+unslider-dots.css
+unslider-min.js
+unslider.css
