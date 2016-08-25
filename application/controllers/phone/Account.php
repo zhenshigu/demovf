@@ -3,7 +3,6 @@
 //引用到的文件：控制器文件application/core/MY_Controller,
 //配置文件library/Account_errors.php,library/Predis;
 //模型文件model/phonem/Accountm,model/phonem/Token
-
 class Account extends MY_Controller{
      CONST  PHONE_LENGTH=11;
      CONST EMAIL_REGX="/^([0-9A-Za-z\\-_\\.]+)@([0-9a-z]+\\.[a-z]{2,3}(\\.[a-z]{2})?)$/i";
@@ -22,7 +21,6 @@ class Account extends MY_Controller{
         $this->load->helper('url');
         $this->load->helper('captcha');
         if($this->is_login){
-//            $this->uid=intval($this->uri->segment(6));
             $this->headimgPath=$this->config->item('client_img').$this->_userid.'/headimg';
         }
     }
@@ -98,83 +96,6 @@ class Account extends MY_Controller{
                            exit();  
                        }                                           
                     break;
-//                case 'byname':                  
-//                    if(!isset($registerInfo['username'])||empty($registerInfo['username'])){
-//                        $result['code']=  Account_errors::RET_NAME_NULL;
-//                        $result['msg']= Account_errors::$code_msg[Account_errors::RET_NAME_NULL];
-//                        echo json_encode($result);
-//                        exit();
-//                    }
-//                    if(!isset($registerInfo['password'])||empty($registerInfo['password'])){
-//                        $result['code']=  Account_errors::RET_PASSWORD_NULL;
-//                        $result['msg']=  Account_errors::$code_msg[Account_errors::RET_PASSWORD_NULL];
-//                        echo json_encode($result);
-//                        exit();
-//                    }
-//                    if(!$this->_isNameValid($registerInfo['username'])){
-//                        $result['code']=  Account_errors::RET_NAME_FORMAT;
-//                        $result['msg']=  Account_errors::$code_msg[Account_errors::RET_NAME_FORMAT];
-//                        echo json_encode($result);
-//                        exit();
-//                    }
-//                     if($this->Accountm->check_exist(array('username'=>$registerInfo['username']))){
-//                         $result['code']=  Account_errors::RET_NAME_REGISTERED;
-//                         $result['msg']=  Account_errors::$code_msg[Account_errors::RET_NAME_REGISTERED];
-//                         echo json_encode($result);
-//                         exit();
-//                     }
-//                     $data['username']=$registerInfo['username'];
-//                     $data['mypwd']=$registerInfo['password'];
-//                     if($this->Accountm->register($data)){
-//                         $result['code']=  Account_errors::RET_REGISTER_SUCCESS;
-//                         $result['msg']=  Account_errors::$code_msg[Account_errors::RET_REGISTER_SUCCESS];
-//                         echo json_encode($result);
-//                         exit();
-//                     }  else {
-//                         $result['code']=  Account_errors::RET_REGISTER_FAILED;
-//                         $result['msg']=  Account_errors::$code_msg[Account_errors::RET_REGISTER_FAILED];
-//                         echo json_encode($result);
-//                         exit();
-//                     }
-//                    break;
-//                case 'byemail':
-//                    if(!isset($registerInfo['email'])||empty($registerInfo['email'])){
-//                        $result['code']=  Account_errors::RET_EMAIL_NULL;
-//                        $result['msg']= Account_errors::$code_msg[Account_errors::RET_EMAIL_NULL];
-//                        echo json_encode($result);
-//                        exit();
-//                    }
-//                    if(!isset($registerInfo['password'])||empty($registerInfo['password'])){
-//                        $result['code']=  Account_errors::RET_PASSWORD_NULL;
-//                        $result['msg']=  Account_errors::$code_msg[Account_errors::RET_PASSWORD_NULL];
-//                        echo json_encode($result);
-//                        exit();
-//                    }
-//                    //邮箱密码格式判断
-//                    if (!$this->_isEmail($registerInfo['email'])){    
-//                        $result=array();
-//                        $result['code']=  Account_errors::RET_EMAIL_FORMAT;
-//                        $result['msg']=  Account_errors::$code_msg[Account_errors::RET_EMAIL_FORMAT];
-//                        echo json_encode($result);
-//                        exit();
-//                    }
-//                    if($this->Accountm->check_exist(array('email'=>$registerInfo['email']))){
-//                        $result=array();
-//                        $result['code']=  Account_errors::RET_EMAIL_REGISTERED;
-//                        $result['msg']=  Account_errors::$code_msg[Account_errors::RET_EMAIL_REGISTERED];
-//                        echo json_encode($result);
-//                        exit();
-//                    }
-//                    $data['email']=$registerInfo['email'];
-//                    $data['mypwd']=$registerInfo['password'];
-//                    if($this->Accountm->register($data)){
-//                        $result=array();
-//                        $result['code']=  Account_errors::RET_REGISTER_SUCCESS;
-//                        $result['msg']=  Account_errors::$code_msg[Account_errors::RET_REGISTER_SUCCESS];
-//                        echo json_encode($result);
-//                        exit();
-//                    }                    
-//                    break;
             }
         }  else {
             $result=array();
@@ -184,12 +105,21 @@ class Account extends MY_Controller{
             exit();
         }              
     }
+    //login page
+    function loginPage(){
+        //check if logined
+        if($this->is_login){
+            redirect('/phone/account/myprofile', 'refresh');
+            return;
+        }
+        $data['commonJs']=  $this->load->view('clientm/commonJs','',TRUE);
+        $data['base_url']=  base_url();
+        $this->load->view('clientm/loginPage',$data);
+    }
     //手机用户登录函数
     function login(){
+        header("Content-type: application/json");
         $loginInfo=array();
-//        $loginInfo['account']=  $this->input->post('account',TRUE);
-//        $loginInfo['password']=  $this->input->post('password',TRUE);
-//        $userInfo=$this->Accountm->login($loginInfo);
         $loginInfo['phone']=$this->input->post('account',TRUE);
         $userInfo=  $this->Accountm->oget($loginInfo);
         $postPwd=$this->input->post('password',TRUE);       
@@ -206,30 +136,12 @@ class Account extends MY_Controller{
             echo json_encode($result);
             exit();
         }
-        //登录成功，判断是否重复登录
-        $accessToken=  $this->Token->getByUserid($userInfo['userid']);
-        log_message("info", $accessToken);
-        //不存在token，属于第一次登录
-        if(!$accessToken){
-            log_message("info", "in");
-            $ip = $this->input->ip_address();
-            $accessToken=$this->Token->genToken($userInfo,$ip);        
-            if(!$accessToken){
-                $result=array();
-                $result['code']=  Account_errors::RET_TOKEN_GEN_ERROR;
-                $result['msg']=  Account_errors::$code_msg[Account_errors::RET_TOKEN_GEN_ERROR];
-                echo json_encode($result);
-                exit();
-            }
-        }
-        //返回用户信息和accessToken
-        $result=array();
-        unset($userInfo['mypwd']);
-        $userInfo['token']=$accessToken;
-        $result['result']=$userInfo;
-        $result['code']=  Account_errors::RET_LOGIN_SUCCESS;
-        echo json_encode($result);
-        exit();
+        //登录成功
+       $_SESSION['phone']=$userInfo['phone'];
+       $_SESSION['userid']=$userInfo['userid'];
+       $result=array();
+       $result['code']=  Account_errors::RET_LOGIN_SUCCESS;
+       echo json_encode($result);
     }
     //手机用户自动登录
     function autoLogin(){
@@ -257,11 +169,8 @@ class Account extends MY_Controller{
     //用户退出
     function logout(){
         if($this->is_login){            
-            if($this->Token->logout($this->_userid)){
-                echo 1;
-            }  else {
-                echo 0;
-            }
+            session_destroy();
+            echo 1;
         }  else {
             echo 0;
         }        

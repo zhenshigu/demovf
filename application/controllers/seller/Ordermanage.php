@@ -4,7 +4,7 @@ class Ordermanage extends CI_Controller{
     protected $redis_delo;//保存在redis的取消订单队列，存在取消订单消息
     protected $redis_newo_result;//存放新订单内容
     protected $redis_delo_result;//存放取消订单内容
-    protected $pageCount=2;//分页用，每页显示的记录数
+    protected $pageCount=8;//分页用，每页显示的记录数
     public function __construct() {
         parent::__construct();
         $this->config->load('my_sys_config');
@@ -59,13 +59,19 @@ class Ordermanage extends CI_Controller{
     }
     //返回符合条件的订单列表并进行分页
     function ordersList($offset=0){
+        $administors=array(9);
+        $isSu=  in_array($_SESSION['sid'], $administors);
         $ostatus=  $this->input->post('ostatus');
         $ostatus=intval($ostatus);
         if(!empty($ostatus)){
             $data['ostatus']=&$ostatus ;
         }
         $data['sid']=&$_SESSION['sid'];
-        $total=  $this->Orderm->ocount($data);
+        //administor see all orders;otherwise see his orders;
+        if($isSu){
+            unset($data['sid']);
+        }
+        $total=  $this->Orderm->ocount($data);     
         if(!$total){
             $data['total']=0;
              $data['base_url']=  base_url();
@@ -81,7 +87,7 @@ class Ordermanage extends CI_Controller{
         }  else {
             $offset=$offset-$offset%$this->pageCount;
         }
-        $res=  $this->Orderm->ogetes($data,'*',  $this->pageCount,$offset);
+            $res=  $this->Orderm->ogetes($data,'*',  $this->pageCount,$offset);    
         if($res){
             $theurl=  $this->config->item('ctl_dir').'Ordermanage/ordersList/';
             $nevigation=$this->mypagination->paginagtion($this->pageCount,$total,$offset,$theurl);
@@ -112,5 +118,5 @@ class Ordermanage extends CI_Controller{
         $data['base_url']=  base_url();
         $this->load->view('sellerv/nav',$data);
         $this->load->view('sellerv/Newordersv');
-    }
+    }    
 }

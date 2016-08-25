@@ -1,4 +1,5 @@
 <?php
+require 'vendor/autoload.php';
 //客户端用来查看商品的控制器
 class Goods extends MY_Controller{
     public function __construct() {
@@ -152,7 +153,7 @@ class Goods extends MY_Controller{
             echo -1;
             return;
         }
-        $userid=  $this->input->post('userid',TRUE);
+        $userid=  $this->_userid;
         $gid=  $this->input->post('gid',TRUE);
         if(!$gid||!$userid){
             echo 0;
@@ -173,6 +174,32 @@ class Goods extends MY_Controller{
             $data['gid']=$res['gid'];
             if($this->Goodsm->addrecord($data,'customer_order')){
                 echo 1;
+                //send new order email to notify me
+                $mail = new PHPMailer;
+                //$mail->SMTPDebug = 3;                               // Enable verbose debug output
+                $mail->CharSet = "utf-8"; 
+                $mail->isSMTP();                                      // Set mailer to use SMTP
+                $mail->Host = 'smtp.viewfuns.com';  // Specify main and backup SMTP servers
+                $mail->SMTPAuth = true;                               // Enable SMTP authentication
+                $mail->Username = 'notify@viewfuns.com';                 // SMTP username
+                $mail->Password = $this->config->item('notify_email');                           // SMTP password
+//                $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
+                $mail->Port = 25;                                    // TCP port to connect to
+
+                $mail->setFrom('notify@viewfuns.com');
+                $mail->addAddress('cds@viewfuns.com');     // Add a recipient
+                $mail->isHTML(true);                                  // Set email format to HTML
+                $mail->Subject = '你有新的订单';
+                $mail->Body    = '用户编号:'.$data['userid'].'<br>下单时间:'.date('Y-m-d H:i:s',$data['odate']).'<br>'
+                        . '套餐编号:'.$data['gid'].';套餐名称:'.$data['oname'].';套餐价格:'.$data['oprice'].'<br>'
+                        . '套餐描述:'.$data['odescription'].'<br>'.'商家编号:'.$data['sid'];
+                $mail->AltBody = '你有新的订单，请注意查看';
+                if(!$mail->send()) {
+                    echo 'Message could not be sent.';
+                    echo 'Mailer Error: ' . $mail->ErrorInfo;
+                } else {
+                    echo 'Message has been sent';
+                }
                 return;
             }
         }
@@ -272,5 +299,5 @@ class Goods extends MY_Controller{
             echo 0;
         }
     }
-
+    
 }

@@ -4,7 +4,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-    <title>首页</title>
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm-extend.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo $base_url.'static/css/apm.css';?>">
     <link rel="stylesheet" type="text/css" href="<?php echo $base_url.'static/css/load-com.css';?>">
     <link rel="stylesheet" type="text/css" href="<?php echo $base_url.'static/css/load5.css';?>">
@@ -12,7 +17,26 @@
 </head>
 
 <body>
-<ul class="nav">
+     <div class="page-group">
+        <!-- 单个page ,第一个.page默认被展示-->
+        <div class="page">
+             <nav class="bar bar-tab">
+                <a class="tab-item external " href="/phone/shifan">
+                    <span class="icon icon-home"></span>
+                    <span class="tab-label">首页</span>
+                </a>
+                <a class="tab-item external active" href="/phone/goods/hslist">
+                    <span class="icon icon-cart"></span>
+                    <span class="tab-label">交易</span>
+                </a>
+                <a class="tab-item external " href="/phone/account/myprofile">
+                    <span class="icon icon-me"></span>
+                    <span class="tab-label">我的</span>
+                </a>
+            </nav>
+            <!-- 这里是页面内容区 -->
+            <div class="content">
+                <ul class="nav">
     <li><span class="act"><a href="<?php echo $base_url.'phone/goods/hsList'?>">婚摄</a></span></li>
     <li class="line-s"></li>
     <li><span><a href="<?php echo $base_url.'phone/Goods/storeList'?>">门店</a></span></li>
@@ -25,7 +49,7 @@
             if($res){
                 foreach ($res as &$one){
                     $tcdetail=$base_url.'phone/Goods/hsdetail/'.$one['gid'].'/'.$one['sid'];
-                    echo "<li><a href=$tcdetail><img src={$one['thumbnail']}>";
+                    echo "<li><a href=$tcdetail external><img src={$one['thumbnail']}>";
                     echo '<span class="hs_title_price">'."{$one['gname']} {$one['gprice']}".'</span></a></li>';
                 }
             }
@@ -38,10 +62,18 @@
         <li><a href="<?php echo $base_url.'phone/Account/myProfile'?>"><span data-tag="2">我的</span></a></li>
         <li><a href="<?php echo $base_url.'phone/Goods/hsList'?>"><span class="act" data-tag="3">婚摄</span></a></li>
 </ul>-->
-    <input type="hidden" id="_base_url" value="<?php echo $base_url; ?>">
-    <script type="text/javascript" src="<?php echo $base_url.'static/js/zepto.js'?>"></script>
+            </div>
+        </div>
+    </div>
 
-<script type="text/javascript">
+
+    <input type="hidden" id="_base_url" value="<?php echo $base_url; ?>">
+    <script type="text/javascript" src="http://static.viewfuns.com/static/js/zepto.js"></script>
+    <script>$.config = {router: false};</script>
+    <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+    <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm-extend.min.js' charset='utf-8'></script>
+<script type="text/javascript">   
+    $.init();
     var base_url=$('#_base_url').val();
     //获取屏幕高度
 //$(function(){

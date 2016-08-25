@@ -27,42 +27,51 @@ class MY_Controller extends CI_Controller{
 //        }
 //    }
     //20160412新构造函数，判断是否已经登录
+//    function __construct() {
+//        parent::__construct();
+//        $this->load->model('phonem/Token');
+//        $this->load->library('Predis');
+//        $sign_time_id=  $this->input->post('sign_time_id');
+//        if(!$sign_time_id){
+//            $sign=  $this->uri->segment(4);
+//            $timestamp=  $this->uri->segment(5);
+//            $userid=  $this->uri->segment(6);
+//            $this->_userid=$userid;
+//        }  else {
+//            $tmparr=  explode('/', $sign_time_id);
+//            $sign=$tmparr[0];
+//            $timestamp=$tmparr[1];
+//            $userid=$tmparr[2];
+//            $this->_userid=$userid;
+//        }               
+//        if(!$sign||!$timestamp||!$userid){
+//            return;
+//        }
+//        $now=  time();
+//        //判断URL的登录态是否有效
+//        if($now-$timestamp>10){
+//            return;
+//        }
+//        $serverToken=  $this->Token->getByUserid($userid);
+//        //token不存在
+//        if(!$serverToken){
+//            return;
+//        }
+//        $serverSign=  md5($serverToken.$timestamp.$this->salt);
+//        log_message("debug", $serverSign);
+//        if($sign!=$serverSign){
+//            return;
+//        }  else {
+//            $this->is_login = true;
+//        }
+//    }
+    //20160812 new construction,check if login
     function __construct() {
         parent::__construct();
-        $this->load->model('phonem/Token');
-        $this->load->library('Predis');
-        $sign_time_id=  $this->input->post('sign_time_id');
-        if(!$sign_time_id){
-            $sign=  $this->uri->segment(4);
-            $timestamp=  $this->uri->segment(5);
-            $userid=  $this->uri->segment(6);
-            $this->_userid=$userid;
-        }  else {
-            $tmparr=  explode('/', $sign_time_id);
-            $sign=$tmparr[0];
-            $timestamp=$tmparr[1];
-            $userid=$tmparr[2];
-            $this->_userid=$userid;
-        }               
-        if(!$sign||!$timestamp||!$userid){
-            return;
-        }
-        $now=  time();
-        //判断URL的登录态是否有效
-        if($now-$timestamp>10){
-            return;
-        }
-        $serverToken=  $this->Token->getByUserid($userid);
-        //token不存在
-        if(!$serverToken){
-            return;
-        }
-        $serverSign=  md5($serverToken.$timestamp.$this->salt);
-        log_message("debug", $serverSign);
-        if($sign!=$serverSign){
-            return;
-        }  else {
-            $this->is_login = true;
+        session_start();
+        if(isset($_SESSION['phone'])){
+            $this->is_login=TRUE;
+            $this->_userid=$_SESSION['userid'];
         }
     }
 }

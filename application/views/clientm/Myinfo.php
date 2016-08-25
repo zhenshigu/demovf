@@ -7,12 +7,43 @@
     <meta http-equiv="Expires" content="0">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Cache-control" content="no-cache">
-    <?php echo $commonCss; ?>
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+     <?php echo $commonCss; ?>
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm-extend.min.css">
+   
     
 </head>
 
 <body>
-    <div id="logined" >
+     <div class="page-group">
+        <div class="page">
+            <!-- 标题栏 -->
+            <header class="bar bar-nav">
+                <a class="icon icon-me pull-left open-panel"></a>
+                <h1 class="title">我的</h1>
+            </header>
+          <!-- 工具栏 -->
+            <nav class="bar bar-tab">
+                <a class="tab-item external " href="/phone/shifan">
+                    <span class="icon icon-home"></span>
+                    <span class="tab-label">首页</span>
+                </a>
+                <a class="tab-item external" href="/phone/goods/hslist">
+                    <span class="icon icon-cart"></span>
+                    <span class="tab-label">交易</span>
+                </a>
+                <a class="tab-item external active" href="/phone/account/myprofile">
+                    <span class="icon icon-me"></span>
+                    <span class="tab-label">我的</span>
+                </a>
+            </nav>
+         <!-- 这里是页面内容区 -->
+            <div class="content">
+                    <div id="logined" >
 <ul class="myinfo_body">
     <li id="headimg"><span>头像:</span><span id="append_img"><img class="thumb_head" src=""></span><span><img class="small_arrow" src="<?php echo $base_url.'static/img/next.png';?>"></span></li>
     <li id="phone"><span >手机号码:</span><span id="append_phone"></span><span><img class="small_arrow" src="<?php echo $base_url.'static/img/next.png';?>"></span></li>
@@ -100,22 +131,28 @@
         你还没登录哦...
     </div>
     <div style="text-align: center">
-    <span class="red_button uniColor"  onclick="demo.ToLogin()">去登录</span>
+    <span class="red_button uniColor"  onclick="location.href='/phone/account/loginpage'">去登录</span>
     <a class="red_button uniColor" style="margin-top: 10px" href="<?php echo $base_url.'phone/Account/regPage';?>">去注册</a>
     </div>
 </div>
+            </div>
+        </div>
+    </div>
+
 <input type="hidden" id="_base_url" value="<?php echo $base_url; ?>">
 <?php echo $commonJs;?>
 <script type="text/javascript" src="http://static.viewfuns.com/static/js/mysha1.js"></script>
-
+    <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+    <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm-extend.min.js' charset='utf-8'></script>
 <script type="text/javascript">
+    $.init();
  var base_url=$('#_base_url').val();
 $(function(){    
-    if(demo.getUserid()==""){
-        $('#nologin').show();
-        $('#logined').hide();
-        return;
-    }
+//    if(demo.getUserid()==""){
+//        $('#nologin').show();
+//        $('#logined').hide();
+//        return;
+//    }
     //根据窗口变化调整遮罩层高度
     window.onresize = function(){  
         $('.mask').css('height',document.body.scrollHeight);
@@ -124,7 +161,7 @@ $(function(){
         url: base_url + 'phone/Account/ajaxProfile',
         type: 'post',
         data: {
-            sign_time_id:demo.getSign()
+//            sign_time_id:demo.getSign()
         },
         success: function(data) {
             if(data.toLogin){
@@ -149,59 +186,37 @@ $(function(){
             $('#logined').hide();
         }
     })
-//    var sh=document.documentElement.clientHeight;
-//    var timetop = sh - 45;
-//    $('.index_nav').css('top', timetop + "px");
-//    $('.index_nav li').tap(function() {
-//        $('.index_nav li span').removeClass("act");
-//        $(this).children().addClass("act");
-//        var _tag = $(this).children().data("tag");
-//        current = _tag;
-//        switch (_tag) {
-//            case 0:
-//
-//                break;
-//            case 1:
-//
-//                break;
-//            case 2:
-//
-//                break;
-//            case 3:
-//    //            location=base_url+demo.getCity();
-//        }
-//    })
 })
-$('#gender').tap(function() {
+$('#gender').click(function() {
     $("#mask").show().css("opacity", "0.8");
     $('#forgender').show();
 })
-$('#phone').tap(function(){
+$('#phone').click(function(){
     $("#mask").show().css("opacity", "0.8");
     $("#forphone").show();
 
 })
-$('#setpwd').tap(function(){
+$('#setpwd').click(function(){
     $("#mask").show().css("opacity", "0.8");
     $('#forsetpwd').show();
 })
-$('#nickname').tap(function(){
+$('#nickname').click(function(){
     $("#mask").show().css("opacity", "0.8");
     $("#forname").show();
 })
-$('#mask').tap(function(){
+$('#mask').click(function(){
     $(this).hide();
     $('#forgender').hide();
     $('#forname').hide();
     $('#forphone').hide();
     $('#forsetpwd').hide();
 })
-$('#setboy').tap(function(){
+$('#setboy').click(function(){
     $.ajax({
         url: base_url + 'phone/Account/setGender',
         type: 'post',
         data: {
-            sign_time_id:demo.getSign(),
+//            sign_time_id:demo.getSign(),
             gender:1
         },
         success: function(data) {
@@ -209,19 +224,19 @@ $('#setboy').tap(function(){
                 $('#append_sex').html('男');
                  
             }else{
-                demo.showToast('设置失败');
+                $.toast('设置失败');
             }
             $('#mask').hide();
             $('#forgender').hide();
         }
     })
 })
-$('#setgirl').tap(function(){
+$('#setgirl').click(function(){
     $.ajax({
         url: base_url + 'phone/Account/setGender',
         type: 'post',
         data: {
-            sign_time_id:demo.getSign(),
+//            sign_time_id:demo.getSign(),
             gender:0
         },
         success: function(data) {
@@ -231,18 +246,18 @@ $('#setgirl').tap(function(){
             $('#forgender').hide();
             
             }else{
-                demo.showToast('设置失败');
+                $.toast('设置失败');
             }
         }
     })
 })
-$('#setname').tap(function(){
+$('#setname').click(function(){
     var name=$('#myname').val();
         $.ajax({
         url: base_url + 'phone/Account/setNickname',
         type: 'post',
         data: {
-            sign_time_id:demo.getSign(),
+//            sign_time_id:demo.getSign(),
             name:name
         },
         success: function(data) {
@@ -251,29 +266,29 @@ $('#setname').tap(function(){
                 $('#mask').hide();
             $('#forname').hide();
             }else{
-                demo.showToast('设置失败');
+                $.toast('设置失败');
             }
         }
     })
 })
-$('#modifyPwd').tap(function(){
+$('#modifyPwd').click(function(){
     var myoldPwd=$('#myoldPwd').val();
     var mynewPwd=$('#mynewPwd').val();
     var confPwd=$('#confPwd').val();
     if(!myoldPwd){
-        demo.showToast("旧密码不能为空");
+        $.toast("旧密码不能为空");
         return;
     }
     if(!mynewPwd){
-        demo.showToast("新密码不能为空");
+        $.toast("新密码不能为空");
         return;
     }
     if(!confPwd){
-        demo.showToast("确认密码不能为空");
+        $.toast("确认密码不能为空");
         return;
     }
     if(mynewPwd!=confPwd){
-        demo.showToast("新密码和确认密码不一致");
+        $.toast("新密码和确认密码不一致");
         return;
     }
     $.ajax({
@@ -282,22 +297,22 @@ $('#modifyPwd').tap(function(){
             data: { 
                 oldPwd:hex_sha1(myoldPwd),
                 password:hex_sha1(mynewPwd),
-                sign_time_id:demo.getSign()
+//                sign_time_id:demo.getSign()
             },
             success: function(data) {
                 switch(data.code){
                     
                     case 0:
-                        demo.showToast("修改密码失败");
+                        $.toast("修改密码失败");
                         break;
                     case 10010:
-                        demo.showToast("密码不能为空");
+                        $.toast("密码不能为空");
                         break;     
                     case -1:
-                        demo.showToast("旧密码不正确");
+                        $.toast("旧密码不正确");
                         break; 
                     case 1:
-                        demo.showToast("修改密码成功");
+                        $.toast("修改密码成功");
                         $('#mask').hide();
                         $('#forsetpwd').hide();
                         break;
@@ -305,27 +320,27 @@ $('#modifyPwd').tap(function(){
             }
         })
 })
-$('#logout').tap(function(){
+$('#logout').click(function(){
     $.ajax({
         url: base_url + 'phone/Account/logout',
         type: 'post',
         data: {
-            sign_time_id:demo.getSign()
+//            sign_time_id:demo.getSign()
         },
         success: function(data) {
             if(data==1){
-                demo.showToast('退出成功');                
+                $.toast('退出成功');                
                 $('#logined').hide();
                 $('#nologin').show();
                 demo.logout();
 //                demo.ToLogin();
             }else{
-                demo.showToast('退出失败');
+                $.toast('退出失败');
             }
         }
     })
 })
-$('#headimg').tap(function(){
+$('#headimg').click(function(){
     demo.setHeadimg();
 })
 //获取短信验证码
@@ -333,7 +348,7 @@ var countdown=60;
 function getMyCaptcha(obj){
     var yourphone=$('#_newphone').val();
     if(!yourphone){
-        demo.showToast("先输入新手机号码");
+        $.toast("先输入新手机号码");
         return;
     }
     $.ajax({
@@ -342,24 +357,24 @@ function getMyCaptcha(obj){
         data: {
             yourphone:yourphone,
             type:1,
-            sign_time_id:demo.getSign()
+//            sign_time_id:demo.getSign()
         },
         success: function(data) {
             switch(data.code){
                 case 1:
-                    demo.showToast("发送短信验证码成功");
+                    $.toast("发送短信验证码成功");
                     break;
                 case -1:
-                    demo.showToast("服务器发送短信验证码出错");
+                    $.toast("服务器发送短信验证码出错");
                     break;
                 case 10004:
-                    demo.showToast("手机格式不正确");
+                    $.toast("手机格式不正确");
                     break;
                 case 10001:
-                    demo.showToast("该手机号码已经被注册");
+                    $.toast("该手机号码已经被注册");
                     break;
                 case 10025:
-                    demo.showToast("你还没登录");
+                    $.toast("你还没登录");
                     break;
             }
         }
@@ -385,15 +400,15 @@ function settime(obj) {
     ,1000) 
 }
 //设置手机号码
-$('#submit_phone').tap(function(){
+$('#submit_phone').click(function(){
     var yourphone=$('#_newphone').val();
     if(!yourphone){
-        demo.showToast("先输入新手机号码");
+        $.toast("先输入新手机号码");
         return;
     }
     var captcha=$('#phoneCaptcha').val();
     if(!captcha){
-        demo.showToast("请先输入短信验证码");
+        $.toast("请先输入短信验证码");
         return;
     }
     $.ajax({
@@ -402,45 +417,34 @@ $('#submit_phone').tap(function(){
         data: {
             newPhone:yourphone,
             captcha:captcha,
-            sign_time_id:demo.getSign()
+//            sign_time_id:demo.getSign()
         },
         success: function(data) {
             switch(data.code){
                 case 1:
-                    demo.showToast("修改手机号码成功");
+                    $.toast("修改手机号码成功");
                     $('#append_phone').html(yourphone);
                     $('#forphone').hide();
                     $('#mask').hide();
                     break;
                 case 0:
-                    demo.showToast("修改手机号码失败");
+                    $.toast("修改手机号码失败");
                     break;
                 case 10004:
-                    demo.showToast("手机格式不正确");
+                    $.toast("手机格式不正确");
                     break;
                 case 10001:
-                    demo.showToast("该手机号码已经被注册");
+                    $.toast("该手机号码已经被注册");
                     break;
                 case 10024:
-                    demo.showToast("短信验证码错误");
+                    $.toast("短信验证码错误");
                 case 10025:
-                    demo.showToast("你还没登录");
+                    $.toast("你还没登录");
                     break;
             }
         }
     })
 })
-
-function onEvent(tag, label, duration) {
-    prompt("event", JSON.stringify({tag:tag,label:label, duration:duration}));
-}
-
-function onKVEvent(tag, map, duration) {
-    map.id = tag;
-    map.duration = duration;
-    prompt("ekv", JSON.stringify( map ));
-}
-
 </script>
 </body>
 </html>

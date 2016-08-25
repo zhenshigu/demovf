@@ -58,14 +58,13 @@ class Saccount extends CI_Controller{
               $data['semail']=  $info['email'];
               $data['spwd']=$info['password'];
               $data['regtime']=  time();          
-              $data['token']=  md5($data['semail'].time());
-              $url_email=  urlencode($data['semail']);
+              $token=  md5($data['semail'].time());
               //将注册信息存放到redis缓存一天，等待验证
-              if($this->predis->hMset($url_email,$data)){
-                     $this->predis->expire($url_email,3600*24);
+              if($this->predis->hMset($token,$data)){
+                    $this->predis->expire($token,3600*24);
                     $this->email->from('hscycg@163.com', 'hscycg');
-                    $this->email->to('641337590@qq.com');
-                    $verify_url=  base_url().'seller/Saccount/verifyEmail/'.$url_email.'/'.$data['token'];
+                    $this->email->to($info['email']);
+                    $verify_url=  base_url().'seller/Saccount/verifyEmail/'.$token;
                     $this->email->subject('verify email');
                     $this->email->message($verify_url);
                     if($this->email->send()){
@@ -80,23 +79,18 @@ class Saccount extends CI_Controller{
         }
     }
     //验证邮箱，激活账号
-    function verifyEmail($base64_email,$token){
-        $base64_email= urlencode($this->security->xss_clean($base64_email));
+    function verifyEmail($token){
         $token=  $this->security->xss_clean($token);
-        if(empty($base64_email)||empty($token)){
+        if(empty($token)){
             echo '参数空，链接无效';
-        }  else if($cacheToken=$this->predis->hget($base64_email,'token')){
-            if($token==$cacheToken){
-                $data=  $this->predis->hMget($base64_email,array('semail','regtime','spwd'));
+        }  else if($this->predis->hget($token,'semail')){
+                $data=  $this->predis->hMget($token,array('semail','regtime','spwd'));
                 if($this->Saccountm->register($data)){
                     echo '账号激活成功,请登录网站';
-                    $this->predis->delete($base64_email);
+                    $this->predis->delete($token);
                 }  else {
-                    echo '账号激活错误,请刷新重试';
+                    echo '账号激活错误,请重新注册账号';
                 }
-            }  else {
-                echo 'token无效，链接无效';
-            }
         }  else {
             echo '链接已经失效，请重新注册账号';
         }

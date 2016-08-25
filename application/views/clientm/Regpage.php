@@ -4,6 +4,15 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>我的生活</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm-extend.min.css">
     <?php echo $commonCss;?>
     
 </head>
@@ -50,8 +59,10 @@
     <input type="hidden" id="_base_url" value="<?php echo $base_url;?>">
     <?php echo $commonJs;?>
     <script type="text/javascript" src='http://static.viewfuns.com/static/js/mysha1.js'></script>
-
+<script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+    <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm-extend.min.js' charset='utf-8'></script>
 <script type="text/javascript">
+    
 $(function() {
     var base_url=$('#_base_url').val();
     $('#sendCode').tap(function() {
@@ -72,13 +83,13 @@ $(function() {
                         $('#block2').toggle();
                         break;
                     case 0:
-                        demo.showToast("图片验证码错误");
+                        $.toast("图片验证码错误");
                         break;
                     case 10001:
-                        demo.showToast("手机号码已经被注册");
+                        $.toast("手机号码已经被注册");
                         break;
                     case 10004:
-                        demo.showToast("手机号码格式错误,必须为11位数字");
+                        $.toast("手机号码格式错误,必须为11位数字");
                         break;
                     case -1:
                         deomo.showToast("短信验证码发送失败");
@@ -88,7 +99,7 @@ $(function() {
         })
     })
     $('#goback').tap(function(){
-        demo.ToLogin();
+//        demo.ToLogin();
     })
     $('#imgid').tap(function(){
         location.reload();
@@ -99,11 +110,11 @@ $(function() {
         var pwd2=$('#pwd2').val();
         var phone = $('#yourphone').val();
         if (!captcha||!password||!pwd2) {
-            demo.showToast("输入框不能为空");
+            $.toast("输入框不能为空");
             return;
         }
         if (password!=pwd2) {
-            demo.showToast("两次输入的密码不一致");
+            $.toast("两次输入的密码不一致");
             return;
         }
         $.ajax({
@@ -119,29 +130,29 @@ $(function() {
                 switch(data.code){
                     
                     case 10011:
-                        demo.showToast("注册类型不能为空");
+                        $.toast("注册类型不能为空");
                         break;
                     case 10007:
-                        demo.showToast("手机号码不能为空");
+                        $.toast("手机号码不能为空");
                         break;
                     case 10024:
-                        demo.showToast("短信验证码错误,请重新输入");
+                        $.toast("短信验证码错误,请重新输入");
                         break;
                     case 1:
-                        demo.showToast("注册成功");
-                        demo.ToLogin();
+                        $.toast("注册成功");
+//                        demo.ToLogin();
                         break;
                 }
             }
         })
     })
-    $('#yourphone').on('blur',function(){
-        var regAccount=$('#yourphone').val();     
-        if(regAccount!=""){
-            demo.saveAccount(regAccount);           
-        }       
-    })
-    $('#yourphone').val(demo.getAccount());
+//    $('#yourphone').on('blur',function(){
+//        var regAccount=$('#yourphone').val();     
+//        if(regAccount!=""){
+//            demo.saveAccount(regAccount);           
+//        }       
+//    })
+//    $('#yourphone').val(demo.getAccount());
 })
 </script>
 </body>
