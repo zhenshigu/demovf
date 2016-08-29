@@ -38,7 +38,7 @@
             <div class="content">
                 <ul class="nav">
     <li><span class="act"><a external href="<?php echo $base_url.'phone/goods/hsList'?>">婚摄</a></span></li>
-    <li class="line-s"></li>
+
     <li><span><a external href="<?php echo $base_url.'phone/Goods/storeList'?>">影楼</a></span></li>
 </ul>
 <div id="tip1" class="load-container load5" style="z-index:125;position: fixed;display:none">

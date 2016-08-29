@@ -14,7 +14,6 @@
      
     <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
     <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm-extend.min.css">   
-    <?php echo $commonCss; ?>
 </head>
 
 <body>

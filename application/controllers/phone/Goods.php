@@ -71,8 +71,8 @@ class Goods extends MY_Controller{
     }
     //查看婚纱套餐详情
     function hsdetail($gid,$sid){
-        $gid=  $this->security->xss_clean($gid);
-        $sid=  $this->security->xss_clean($sid);
+        $gid= intval($this->security->xss_clean($gid));
+        $sid= intval($this->security->xss_clean($sid));
         $conf['gid']=$gid;
         $res=  $this->Goodsm->oget($conf);
         if($res){
@@ -95,6 +95,26 @@ class Goods extends MY_Controller{
         }
 	$res['base_url']=  base_url();
         $this->load->view('clientm/Hsdetailv',$res);
+    }
+    //查看婚纱套餐评论
+    function hsComment(){
+        header("Content-Type:application/json");
+        $gid=  intval($this->input->post('gid',TRUE));
+        $field='customer_order.userid,odate,criticism,username,headimg';
+        $data['gid']=&$gid;
+        $data['criticism !=']="''";
+        $t1='customer_order';
+        $t2='customer_account';
+        $join='customer_order.userid=customer_account.userid';
+        $limit='';
+        $res=  $this->Goodsm->mtget($data,$t1,$t2,$join,$field,$limit);
+        if($res){
+            foreach ($res as &$one){
+                $one['odate']=date('Y-m-d',$one['odate']);
+                $one['headimg']=$this->config->item('client_img').$one['userid'].'/headimg/'.$one['headimg'];
+            }
+        }
+        echo json_encode($res);
     }
     //获取门店列表
     function storeList($city='深圳市'){
@@ -217,8 +237,8 @@ class Goods extends MY_Controller{
     //查看个人订单
     function myorder(){
         $userid= $this->_userid;
-        if(!$userid){
-            echo 0;
+        if(!$this->is_login){
+            echo -1;
             return;
         }
         $conf['userid']=$userid;
@@ -239,8 +259,8 @@ class Goods extends MY_Controller{
     //异步获取个人订单
     function ajaxMyorder(){
         $userid=  $this->input->post('userid',TRUE);
-        if(!$userid){
-            echo 0;
+        if(!$this->is_login){
+            echo -1;
             return;
         }
         $conf['userid']=$userid;
@@ -258,6 +278,10 @@ class Goods extends MY_Controller{
     }
     //修改订单状态
     function setStatus(){
+        if(!$this->is_login){
+            echo -1;
+            return;
+        }
         $oid=  $this->input->post('oid',TRUE);
         $userid= $this->_userid;
         $ostatus= intval($this->input->post('ostatus',TRUE));
@@ -301,6 +325,10 @@ class Goods extends MY_Controller{
     }
     //删除订单
     function delorder(){
+        if(!$this->is_login){
+            echo -1;
+            return;
+        }
         $oid=  $this->input->post('oid',TRUE);
         $userid=  $this->input->post('userid',TRUE);
         if(!$oid||!$userid){

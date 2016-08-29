@@ -78,15 +78,15 @@ ul {
     height: 10rem;
     position: fixed;
     top: 2.2rem;
-    z-index: 99;
+    z-index: 999;
 }
 
 .nav_guidance li {
-    padding: 5px 10px 0 10px;
+    padding: 0.25rem 0.5rem 0 0.5rem;
 }
 
 .nav_guidance li span {
-    margin-left: 10px;
+    margin-left: 0.5rem;
 }
 
 .s-time {
@@ -118,7 +118,7 @@ ul {
 .nav_c {
     list-style: none;
     position: relative;
-    top: 12.5rem;
+    
 }
 
 .nav_c li {
@@ -138,7 +138,7 @@ ul {
 .nav_content {
     list-style: none;
     position: relative;
-    top: 8.5rem;
+
     background: #fff;
     height: 80%;
 }
@@ -150,7 +150,7 @@ ul {
 .nav_comment {
     list-style: none;
     position: relative;
-    top: 8.1rem;
+
     background: #fff;
 }
 

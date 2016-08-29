@@ -39,7 +39,6 @@
             <div class="content">
 <ul class="nav">
     <li><span  ><a external href="<?php echo $base_url.'phone/goods/hsList'?>">婚摄</a></span></li>
-    <li class="line-s"></li>
     <li><span class="act"><a external href="<?php echo $base_url.'phone/Goods/storeList'?>">影楼</a></span></li>
 </ul>
 <div id="tip1" class="load-container load5" style="z-index:125;position: fixed;display:none">
@@ -51,7 +50,7 @@
                 foreach ($res as &$one){
                     ?>
                     <li>
-                    <a href="<?php echo $base_url.'phone/Goods/storeDetail/'.$one['sid'];?>">
+                    <a external href="<?php echo $base_url.'phone/Goods/storeDetail/'.$one['sid'];?>">
                         <img src="<?php echo $one['headimg']; ?>">
                     <span class="store_name"><?php echo $one['nickname'];?></span><span class="store_place"><?php echo $one['district'].$one['address']?></span>
                     </a>

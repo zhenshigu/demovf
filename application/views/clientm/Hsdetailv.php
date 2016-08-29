@@ -20,6 +20,7 @@
          <header class="bar bar-nav">
              <a id="icon-left" class="icon icon-left pull-left"></a>
             <a class="icon icon-refresh pull-right"></a>
+            <h1 class="title">套餐详情</h1>
           </header>
 
          <!-- 这里是页面内容区 -->
@@ -27,20 +28,23 @@
                 <ul class="nav_guidance">
         <li><?php echo $gname;?></li>
         <li>价格:<?php echo $gprice;?>元</li>
-        <li>描述:<?php echo $gdescription?></li>
+        <li style="height: 4rem">描述:<?php echo $gdescription?></li>
         <?php if(!$ordered){?>
         <li id="yuyue"><a href="#" class="button button-big button-round">预约</a></li>
         <?php }else{?>
         <li id="qxyuyue"><a href="#" class="button button-big button-round button-danger">取消预约</a></li>
         <?php }?>
     </ul>
-    <ul class="s-time">
-        <li><span class="act" data-tag="0">美图</span></li>
-        <li><span data-tag="1">参数</span></li>
-        <li><span data-tag="2">评论</span></li>
-    </ul>
-    <div id='img_area'>
-        <ul class="nav_c">
+                <div style="position: relative;top: 10.3rem">
+    <div class="buttons-tab">
+    <a href="#tab1" class="tab-link active button">美图</a>
+    <a id="toTab2" href="#tab2" class="tab-link button">参数</a>
+    <a id="toTab3" href="#tab3" class="tab-link button">评论</a>
+  </div>
+
+    <div class="tabs">
+      <div id="tab1" class="tab active">
+          <ul class="nav_c">
             <?php 
                 if($gimg){
                     foreach ($gimg as $one){
@@ -51,49 +55,24 @@
                 }             
             ?>
         </ul>
-    </div>
-    <div id="hs_params">
-        <ul class="nav_content">
+      </div>
+      <div id="tab2" class="tab">
+
+          <ul class="nav_content">
             <li><?php echo $gname;?></li>
             <li><?php echo $gprice;?>元</li>
-            <li>
-                 <?php echo $gcontent;?></li>
+            <li class="hs_param"><?php echo $gcontent;?></li>
         </ul>
-    </div>
-    <div id="hs_comment">
-        <ul class="nav_comment">
-            <li>
-                <span style="width: 67%"><img src="../img/20160319005129_763.jpg" width="30px" height="30px">我是用户</span><span style="text-align: right;width: 33%">2016-11-11</span>
-                <p>
-                    朋友推荐到这里的，当时感觉价格略高，然后纠结了很久，但是交了定金之后就会发现真的是一文价钱一文货，交了定金之后就会来电话和短信核实身份，并且告知一些注意事项，然后下了飞机之后会有师傅接机，住宿一晚酒店也是超级豪华，拍照一对一的服务，化妆师安琪，摄影师孔Sir，灯光师张裕，礼服师娇娇，微电影导演陈导，全程服务态度都特别好，非常尽心，拍照效果也是十分满意，完美！
-                </p>
-            </li>
-            <li>
-                <span style="width: 67%"><img src="../img/20160319005129_763.jpg" width="30px" height="30px">我是用户</span><span style="text-align: right;width: 33%">2016-11-11</span>
-                <p>
-                    朋友推荐到这里的，当时感觉价格略高，然后纠结了很久，但是交了定金之后就会发现真的是一文价钱一文货，交了定金之后就会来电话和短信核实身份，并且告知一些注意事项，然后下了飞机之后会有师傅接机，住宿一晚酒店也是超级豪华，拍照一对一的服务，化妆师安琪，摄影师孔Sir，灯光师张裕，礼服师娇娇，微电影导演陈导，全程服务态度都特别好，非常尽心，拍照效果也是十分满意，完美！
-                </p>
-            </li>
-            <li>
-                <span style="width: 67%"><img src="../img/20160319005129_763.jpg" width="30px" height="30px">我是用户</span><span style="text-align: right;width: 33%">2016-11-11</span>
-                <p>
-                    朋友推荐到这里的，当时感觉价格略高，然后纠结了很久，但是交了定金之后就会发现真的是一文价钱一文货，交了定金之后就会来电话和短信核实身份，并且告知一些注意事项，然后下了飞机之后会有师傅接机，住宿一晚酒店也是超级豪华，拍照一对一的服务，化妆师安琪，摄影师孔Sir，灯光师张裕，礼服师娇娇，微电影导演陈导，全程服务态度都特别好，非常尽心，拍照效果也是十分满意，完美！
-                </p>
-            </li>
-            <li>
-                <span style="width: 67%"><img src="../img/20160319005129_763.jpg" width="30px" height="30px">我是用户</span><span style="text-align: right;width: 33%">2016-11-11</span>
-                <p>
-                    朋友推荐到这里的，当时感觉价格略高，然后纠结了很久，但是交了定金之后就会发现真的是一文价钱一文货，交了定金之后就会来电话和短信核实身份，并且告知一些注意事项，然后下了飞机之后会有师傅接机，住宿一晚酒店也是超级豪华，拍照一对一的服务，化妆师安琪，摄影师孔Sir，灯光师张裕，礼服师娇娇，微电影导演陈导，全程服务态度都特别好，非常尽心，拍照效果也是十分满意，完美！
-                </p>
-            </li>
-            <li>
-                <span style="width: 67%"><img src="../img/20160319005129_763.jpg" width="30px" height="30px">我是用户</span><span style="text-align: right;width: 33%">2016-11-11</span>
-                <p>
-                    朋友推荐到这里的，当时感觉价格略高，然后纠结了很久，但是交了定金之后就会发现真的是一文价钱一文货，交了定金之后就会来电话和短信核实身份，并且告知一些注意事项，然后下了飞机之后会有师傅接机，住宿一晚酒店也是超级豪华，拍照一对一的服务，化妆师安琪，摄影师孔Sir，灯光师张裕，礼服师娇娇，微电影导演陈导，全程服务态度都特别好，非常尽心，拍照效果也是十分满意，完美！
-                </p>
-            </li>
+
+      </div>
+      <div id="tab3" class="tab">
+
+          <ul class="nav_comment">
         </ul>
+
+      </div>
     </div>
+                </div>
     <input type="hidden" id="_gid" value="<?php echo $gid;?>">
     <input type="hidden" id="_base_url" value="<?php echo $base_url; ?>">
     <input type="hidden" id="order_id" value="<?php echo $ordered;?>">
@@ -108,30 +87,6 @@
 
     <script>$.init()</script>
 <script type="text/javascript">
- //标签切换函数
-$('.s-time li').click(function() {
-    $('.s-time li span').removeClass("act");
-    $(this).children().addClass("act");
-    var _tag = $(this).children().data("tag");
-    current = _tag;
-    switch (_tag) {
-        case 0:
-            $('#img_area').show();
-            $('#hs_params').hide();
-            $('#hs_comment').hide();
-            break;
-        case 1:
-            $('#img_area').hide();
-            $('#hs_comment').hide();
-            $('#hs_params').show();
-            break;
-        case 2:
-            $('#img_area').hide();
-            $('#hs_params').hide();
-            $('#hs_comment').show();
-            break;
-    }
-})
 //提交订单
 var gid = $('#_gid').val();
 var base_url = $('#_base_url').val();
@@ -172,12 +127,35 @@ $('#qxyuyue').click(function() {
         }
     })
 })
-$('#love').click(function(){
-    $.toast('预约成功');
-//    alert(demo.getSign());
-});
-$('#icon-left').click(function(){
+$('.pull-right').click(function(){
+    history.go(0);
+})
+$('.pull-left').click(function(){
     history.go(-1);
+})
+$('#toTab3').click(function(){
+    $.ajax({
+        url: base_url + 'phone/Goods/hsComment',
+        type: 'post',
+        data: {
+            gid: gid
+        },
+        success: function(data) {
+            if(data){
+                var str='';
+                $.each(data,function(index,item){                   
+                    str+='<li><span style="width: 67%"><img src='+item['headimg']+' width="30px" height="30px">';
+                    str+=item['username']+' </span><span style="text-align: right;width: 33%">'+item['odate']+'</span>';
+                    str+='<p>'+item['criticism']+'</p></li>';                   
+                })
+                $('.nav_comment').html(str);
+            }
+        }
+    })
+})
+$(function(){
+    var hs_param=$("li[class='hs_param']");
+    hs_param.html(hs_param.text().replace(/\n/g,'<br/>'));   
 })
 </script>
 </body>
