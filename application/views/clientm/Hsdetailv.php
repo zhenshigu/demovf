@@ -7,10 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="shortcut icon" href="/favicon.ico">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">   
+    <link rel="stylesheet" type="text/css" href="<?php echo $base_url.'static/css/apm.css';?>">
     <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
     <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm-extend.min.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo $base_url.'static/css/apm.css';?>">
     
 </head>
 
@@ -18,7 +18,7 @@
     <div class="page-group">
         <div class="page page-current">
          <header class="bar bar-nav">
-            <a class="icon icon-left pull-left"></a>
+             <a id="icon-left" class="icon icon-left pull-left"></a>
             <a class="icon icon-refresh pull-right"></a>
           </header>
 
@@ -28,7 +28,11 @@
         <li><?php echo $gname;?></li>
         <li>价格:<?php echo $gprice;?>元</li>
         <li>描述:<?php echo $gdescription?></li>
-        <li id="yuyue">预约</li>
+        <?php if(!$ordered){?>
+        <li id="yuyue"><a href="#" class="button button-big button-round">预约</a></li>
+        <?php }else{?>
+        <li id="qxyuyue"><a href="#" class="button button-big button-round button-danger">取消预约</a></li>
+        <?php }?>
     </ul>
     <ul class="s-time">
         <li><span class="act" data-tag="0">美图</span></li>
@@ -92,7 +96,7 @@
     </div>
     <input type="hidden" id="_gid" value="<?php echo $gid;?>">
     <input type="hidden" id="_base_url" value="<?php echo $base_url; ?>">
-    
+    <input type="hidden" id="order_id" value="<?php echo $ordered;?>">
             </div>
        
         </div>
@@ -105,7 +109,7 @@
     <script>$.init()</script>
 <script type="text/javascript">
  //标签切换函数
-$('.s-time li').tap(function() {
+$('.s-time li').click(function() {
     $('.s-time li span').removeClass("act");
     $(this).children().addClass("act");
     var _tag = $(this).children().data("tag");
@@ -131,7 +135,8 @@ $('.s-time li').tap(function() {
 //提交订单
 var gid = $('#_gid').val();
 var base_url = $('#_base_url').val();
-$('#yuyue').tap(function() {
+var oid=$('#order_id').val();
+$('#yuyue').click(function() {
     $.ajax({
         url: base_url + 'phone/Goods/addOrder',
         type: 'post',
@@ -141,6 +146,7 @@ $('#yuyue').tap(function() {
         success: function(data) {
             if(data==1||data=="1"){
                 $.toast('预约成功');
+                history.go(0);
             }else if(data==-1){
                 $.toast('请先登录');
             }
@@ -148,11 +154,31 @@ $('#yuyue').tap(function() {
         }
     })
 })
-
-$('#love').tap(function(){
+$('#qxyuyue').click(function() {
+    $.ajax({
+        url: base_url + 'phone/Goods/setStatus',
+        type: 'post',
+        data: {
+            oid: oid,
+            ostatus:2
+        },
+        success: function(data) {
+            if(data==1||data=="1"){
+                $.toast('取消预约成功');
+                history.go(0);
+            }else if(data==-1){
+                $.toast('请先登录');
+            }
+        }
+    })
+})
+$('#love').click(function(){
     $.toast('预约成功');
 //    alert(demo.getSign());
 });
+$('#icon-left').click(function(){
+    history.go(-1);
+})
 </script>
 </body>
 </html>

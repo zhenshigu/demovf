@@ -84,6 +84,15 @@ class Goods extends MY_Controller{
             }
             $res['gimg']=$imgurls;
         }
+        $conf2['gid']=$gid;
+        $conf2['userid']=  $this->_userid;
+        $conf2['ostatus']=1;
+        $res2=  $this->Goodsm->oget($conf2,'oid','customer_order');
+        if($res2){
+            $res['ordered']=$res2['oid'];
+        }  else {
+            $res['ordered']=0;
+        }
 	$res['base_url']=  base_url();
         $this->load->view('clientm/Hsdetailv',$res);
     }
@@ -195,10 +204,10 @@ class Goods extends MY_Controller{
                         . '套餐描述:'.$data['odescription'].'<br>'.'商家编号:'.$data['sid'];
                 $mail->AltBody = '你有新的订单，请注意查看';
                 if(!$mail->send()) {
-                    echo 'Message could not be sent.';
-                    echo 'Mailer Error: ' . $mail->ErrorInfo;
+//                    echo 'Message could not be sent.';
+//                    echo 'Mailer Error: ' . $mail->ErrorInfo;
                 } else {
-                    echo 'Message has been sent';
+//                    echo 'Message has been sent';
                 }
                 return;
             }
@@ -206,8 +215,8 @@ class Goods extends MY_Controller{
         echo 0;
     }
     //查看个人订单
-    function myorder($userid){
-        $userid=  $this->security->xss_clean($userid);
+    function myorder(){
+        $userid= $this->_userid;
         if(!$userid){
             echo 0;
             return;
@@ -217,7 +226,7 @@ class Goods extends MY_Controller{
         $t2='seller';
         $join_conf='customer_order.sid=seller.sid';
         $field='odate,oprice,oid,oname,ostatus,odescription,seller.sid,gid,nickname,thumbnail,userid';
-        $res=  $this->Goodsm->mtget($conf,$t1,$t2,$join_conf,$field,10);
+        $res=  $this->Goodsm->mtget($conf,$t1,$t2,$join_conf,$field,'');
         if($res){
             foreach ($res as &$one){
                 $one['thumbnail']=  $this->config->item('http_tc_img').$one['sid'].'/'.$one['thumbnail'];
@@ -250,8 +259,8 @@ class Goods extends MY_Controller{
     //修改订单状态
     function setStatus(){
         $oid=  $this->input->post('oid',TRUE);
-        $userid=  $this->input->post('userid',TRUE);
-        $ostatus=  $this->input->post('ostatus',TRUE);
+        $userid= $this->_userid;
+        $ostatus= intval($this->input->post('ostatus',TRUE));
         if(!$oid||!$userid||!$ostatus){
             echo 0;
             return;
@@ -263,6 +272,31 @@ class Goods extends MY_Controller{
             echo 1;
         }  else {
             echo 0;
+        }
+        if($ostatus==2){
+            $mail = new PHPMailer;
+            //$mail->SMTPDebug = 3;                               // Enable verbose debug output
+            $mail->CharSet = "utf-8"; 
+            $mail->isSMTP();                                      // Set mailer to use SMTP
+            $mail->Host = 'smtp.viewfuns.com';  // Specify main and backup SMTP servers
+            $mail->SMTPAuth = true;                               // Enable SMTP authentication
+            $mail->Username = 'notify@viewfuns.com';                 // SMTP username
+            $mail->Password = $this->config->item('notify_email');                           // SMTP password
+//                $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
+            $mail->Port = 25;                                    // TCP port to connect to
+
+            $mail->setFrom('notify@viewfuns.com');
+            $mail->addAddress('cds@viewfuns.com');     // Add a recipient
+            $mail->isHTML(true);                                  // Set email format to HTML
+            $mail->Subject = '你有订单被用户取消';
+            $mail->Body    = '被用户取消的订单编号:'.$oid;
+            $mail->AltBody = '你有订单被用户取消，请注意查看';
+            if(!$mail->send()) {
+//                    echo 'Message could not be sent.';
+//                    echo 'Mailer Error: ' . $mail->ErrorInfo;
+            } else {
+//                    echo 'Message has been sent';
+            }
         }
     }
     //删除订单
@@ -278,13 +312,27 @@ class Goods extends MY_Controller{
         
     }
     //显示评价页面
-    function showComment($oid,$accessToken){
-        
+    function showComment($oid){
+        if(!$this->is_login){
+            echo -1;
+            return;
+        }
+        $data['oid']=  intval($oid);
+        $res=  $this->Goodsm->oget($data,'criticism','customer_order');
+        if($res){
+            $data['good_comment']=$res['criticism'];
+        }
+        $data['base_url']=  base_url();
+        $this->load->view('clientm/Mycomment',$data);
     }
     //评价订单
     function ajaxComment(){
+        if(!$this->is_login){
+            echo -1;
+            return;
+        }
+        $userid=  $this->_userid;
         $oid=  $this->input->post('oid',TRUE);
-        $userid=  $this->input->post('userid',TRUE);
         $theComment=  $this->input->post('theComment',TRUE);
         if(!$oid||!$userid||!$theComment){
             echo 0;

@@ -17,6 +17,8 @@ em{
 }
 .i_top {    
     position: relative;
+    width: 18rem;
+    margin: 0 auto
 }
 .i_top ul{
 	overflow: hidden;
